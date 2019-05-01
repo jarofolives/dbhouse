@@ -1,0 +1,2364 @@
+
+<!DOCTYPE html>
+<html ng-app="gms" class="admin" ng-strict-di>
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="yH3E5DKgj6hnQ0M7q44koAoKVLmRd3aEBht8AuLp" name="_token">
+    <title>GOLD MEDAL SQUARED | Dashboard</title>
+        <link type="text/css" href="https://www.goldmedalsquared.com/css/admin.css?c=1556298759" rel="stylesheet">
+    <link type="text/css" href="https://www.goldmedalsquared.com/css/courses.css?c=1555479180" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="shortcut icon" href="https://www.goldmedalsquared.com/images/favicon.ico">
+</head>
+
+<body class="cabinet_page gms_theme not_loging_page home_page courses " ng-controller="AppController as appCtrl" ng-init="
+  appCtrl.routes.post.login = 'https://www.goldmedalsquared.com/api/user/login';
+  appCtrl.isLoggedIn = !!1;
+  appCtrl.id = 9130;
+">
+
+<header class="main_header sticky_header">
+    <div class="container container_for_mobile">
+        <div class="inner_wrapp jsMobileNavParent">
+            <a href="https://www.goldmedalsquared.com" class="logo">
+                <picture>
+                    <source srcset="https://www.goldmedalsquared.com/img/gms-admin.png">
+                    <img alt="Logo" class="img-fluid" src="https://www.goldmedalsquared.com/img/gms-admin.png">
+                </picture>
+            </a>
+            <div class="mobile_menu admin_menu collapse jsNavShow">
+
+                                <nav>
+    <ul class="list_lg_up main_nav_list">
+        <li>
+            <img src="https://www.goldmedalsquared.com/images/menu_icons/Dashboard_Icon_1.png" alt="" class="img-fluid menu-icon hidden-md hidden-lg">
+            <a href="https://www.goldmedalsquared.com/dashboard" class="">
+                Dashboard
+            </a>
+        </li>
+                            <li>  
+                <img src="https://www.goldmedalsquared.com/images/menu_icons/Computer_Icon_1.png" alt="" class="img-fluid menu-icon hidden-md hidden-lg">
+                <a class="" href="https://www.goldmedalsquared.com/toolbox/app">GMS+</a>
+            </li>
+                            <li>
+                <img src="https://www.goldmedalsquared.com/images/menu_icons/Slow_Motion_Video_Icon_1.png" alt="" class="img-fluid menu-icon hidden-md hidden-lg">
+                <a class="active course-border" href="https://www.goldmedalsquared.com/user-courses">Courses</a>
+            </li>
+                            <li>
+                <img src="https://www.goldmedalsquared.com/images/menu_icons/Insert_Emoticon_Icon_1.png" alt="" class="img-fluid menu-icon hidden-md hidden-lg">
+                <a class="" href="https://www.goldmedalsquared.com/camps">Camps</a>
+            </li>
+                                                                    <div class="d-lg-none visible-xs visible-sm">
+                        <hr class="mobile-divider">
+                        <ul class="main_nav_list list_lg_up">
+                            <li>
+                                <img src="https://www.goldmedalsquared.com/images/menu_icons/Settings_Icon_1.png" alt="" class="img-fluid menu-icon">
+                                <a href="https://www.goldmedalsquared.com/account">Profile</a>
+                            </li>
+                            <li>
+                                <img src="https://www.goldmedalsquared.com/images/menu_icons/Settings_Icon_1.png" alt="" class="img-fluid menu-icon">
+                                <a href="https://www.goldmedalsquared.com/account/gms-settings">Manage GMS+</a>
+                            </li>
+                            <li>
+                                <img src="https://www.goldmedalsquared.com/images/menu_icons/Phonelink_Erase_Icon_1.png" alt="" class="img-fluid menu-icon">
+                                <a href="https://www.goldmedalsquared.com/logout">Logout</a>
+                            </li>                            
+                        </ul>
+                    </div>
+                    </ul>
+</nav>                <div class="tools_user hidden-xs hidden-sm">
+                    <ul class="list_lg_up main_nav_list main_nav_list_right">
+                        <li>
+                            <a href ng-click="appCtrl.runSlider('admin-contact', true)">
+                                <img src="https://www.goldmedalsquared.com/images/cabinet/mail_user.jpg" alt="" class="img-fluid">
+                            </a>
+                        </li>
+                        <li class="dropdown hidden-xs hidden-sm">
+                            <a href="#" class="wrap_info_user" data-toggle="dropdown">
+                                <span class="icon_user">
+                                    <picture>
+                                        <source srcset="https://www.goldmedalsquared.com/images/spin.svg" data-srcset="/img/admin/mystery-man-avatar.png" id="avatar-source">
+                                        <img alt="" class="img-fluid lazyload avatar" data-src="{% user.avatar || '/img/admin/mystery-man-avatar.png' %}">
+                                    </picture>
+                                </span>
+                                <span class="wrap_name_user">
+                                    <span class="name_user" ng-bind="user.full_name"></span>
+                                    <span class="name_user" ng-hide="!!user.full_name">Matt Oliveira</span>
+                                </span>
+                                <span class="wrap_arrow"><svg viewBox="0 0 20.969 10.969"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down-arrow-white"></use></svg></span>
+                            </a>
+                            <div class="dropdown-menu account_settings">
+                                <ul class="list-unstyled settings_list">
+                                    <li><a href="https://www.goldmedalsquared.com/account">Manage Profile</a></li>
+                                    <li><a href="https://www.goldmedalsquared.com/account/gms-settings">Manage GMS+</a></li>
+                                    <li><a href="https://www.goldmedalsquared.com/logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="list visible_mobile_nav hidden-lg-up">
+                <li class="jsNavBt" data-toggle="collapse"><div class="menu"></div></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="wrapper" ng-cloak>
+    <div class="container">
+        <div class="main_part courses">
+    <h3 class="courses-breadcrumbs welcome_dashboard">
+        <span><a href="https://www.goldmedalsquared.com/user-courses">My Courses&nbsp;</a>>&nbsp;</span>
+        <span>
+            <a href="https://www.goldmedalsquared.com/courses/course/1,foundations-passing">Foundations - Passing</a>
+        </span>
+    </h3>
+        <div class="row player-container" style="margin-bottom: 20px;">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+    <div class="image-title-block courses-iframe no-shadow">
+      <a href="#"
+         class="main-image main-video play player"
+         style=" background-image: url('https://www.goldmedalsquared.com/uploads/images/full-images/8/b/7/kayla-banworth-8b7aad76ab8d0d06be18ab4430586b3a.jpg') ">
+                  <span class="play-background"><i class="fa fa-play fa-2x"></i></span>
+              </a>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-left: -1px;">
+    <div class="lessons-list">
+        <h4>Lessons</h4>
+
+      <div class="lessons-list-container">
+        <ul>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="189adfbb1610edc790"  >
+                Passing Intro and Principles
+                <span class="length">4 min</span>
+              </a>
+            </li>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="e89adfbb1610e2c460"  >
+                Passing Targets
+                <span class="length">9 min</span>
+              </a>
+            </li>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="709adfbb1610e3cbf8"  >
+                Passing Key #1
+                <span class="length">5 min</span>
+              </a>
+            </li>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="a09adfbb1611ebc628"  >
+                Passing Key #2
+                <span class="length">3 min</span>
+              </a>
+            </li>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="1c9adfbb1611ebcd94"  >
+                Passing Key #3
+                <span class="length">3 min</span>
+              </a>
+            </li>
+                      <li class=" list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="a09adfbb1611eac728"  >
+                Passing Key #4
+                <span class="length">2 min</span>
+              </a>
+            </li>
+                      <li class=" d-none  list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="4c9adfbb1611eac0c4"  >
+                Passing Key #5
+                <span class="length">2 min</span>
+              </a>
+            </li>
+                      <li class=" d-none  list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="7c9adfbb1611e8c6f4"  >
+                Starting Posture and Setup
+                <span class="length">3 min</span>
+              </a>
+            </li>
+                      <li class=" d-none  list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="1c9adfbb1611e8ce94"  >
+                Serve Receive Responsibilities
+                <span class="length">8 min</span>
+              </a>
+            </li>
+                      <li class=" d-none  list-margin-bottom">
+              <a href="#" class="simple-play "  data-video-id="709adfbb1611efc6f8"  >
+                Forearms vs Hands
+                <span class="length">5 min</span>
+              </a>
+            </li>
+                  </ul>
+      </div>
+              <p class="text-center">
+          <a href="javascript:void(0)" class="show-all">Show all (10)</a>
+          <a href="javascript:void(0)" class="hide-all d-none">Show less</a>
+        </p>
+          </div>
+  </div>
+</div>
+
+    <div class="course-tabs">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="home" aria-selected="true"><span class="text"><i class="fa fa-file-text-o"></i>OVERVIEW</span><span class="underline"></span></a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link" id="authors-tab" data-toggle="tab" href="#authors" role="tab" aria-controls="contact" aria-selected="false"><span class="text"><i class="fa fa-user-circle-o" aria-hidden="true"></i> AUTHORS </span><span class="underline"></span></a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+      <h4>Description</h4>
+      <div class="course-description"><p>We here at Gold Medal Squared count underhand control (playing the ball with our forearms) as one of the &quot;Big Three&quot; skills in volleyball.&nbsp; A big part of your success as a coach and the success of your program is determined by how well your team can pass.&nbsp; This course covers this skill in its entirety and will give you insights on how to help your passers become their very best.&nbsp; In this course you&#39;ll learn:</p><ul><li>The time-tested principles to inspire not only what you teach, but how to teach it</li><li>Where our passing targets should be relative to our skill level</li><li>The key-driven system of teaching, and the elemental keys of the skill</li><li>Responsibilities&nbsp;between players when passing</li><li>The merits at various levels of passing with hands vs forearms</li></ul><p>Our staff takes you through everything you need to teach this skill to beginners&nbsp;as well as advanced players.&nbsp; We&#39;ll bring you insights gained over 30 years of coaching athletes at every level, with clear video examples and whiteboard explanations.&nbsp; &nbsp;&nbsp;</p></div>
+    </div>
+        <div class="tab-pane fade" id="authors" role="tabpanel" aria-labelledby="authors-tab">
+          <div class="row mb-2">
+        <div class="col-xs-12 col-sm-12">
+          <div class="author-info">
+            <div class="media">
+              <div class="media-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-1">
+                                            <img class="align-self-center mr-4 avatar" src="https://www.goldmedalsquared.com/uploads/images/thumbnails/7/1/5/mike-71519c8805244e07e2351ba0e9ada92d_100x100.jpg" alt="Mike Wall">
+                                  </div>
+                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+                  <div class="pt-2 mt-0 ">
+                    <h5>Mike Wall</h5>
+                    <i class="author-title mb-0 subtitle">Assistant Coach, USA Men&#039;s Volleyball</i>
+                  </div>       
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+          <hr class="m-0 mt-3 pb-3">
+          <div class="author-biography"><p>Over the past 15 years Mike Wall has been heavily involved with Gold Medal Squared, while at the same time coaching at both the University and International levels.&nbsp; Wall began his coaching career as an assistant coach for the UC San Diego men&#39;s program.&nbsp; After a short stint in San Diego, Wall moved over to the women&#39;s game, helping the St. Mary&#39;s Women&#39;s Volleyball Program to their most successful season in school history.&nbsp; From there, Wall served as an assistant coach at the University of Utah, and Arizona State University.&nbsp;&nbsp;&nbsp;</p><p>Currently, Wall is an assistant coach for our Men&#39;s National Team.&nbsp; While on staff, Team USA has won World League Gold, World Cup Gold, World Championship Bronze, and a Bronze Medal at the Rio Olympic Games.&nbsp; Mike plans to be with the team during the Olympic games in Tokyo, Japan in 2020.&nbsp;&nbsp;</p></div>
+        </div>
+      </div>
+          <div class="row mb-2">
+        <div class="col-xs-12 col-sm-12">
+          <div class="author-info">
+            <div class="media">
+              <div class="media-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-1">
+                                            <img class="align-self-center mr-4 avatar" src="https://www.goldmedalsquared.com/uploads/images/thumbnails/3/8/6/chris-mcgown-volleyball-38634090ea8eb0683c44c8c49198e862_100x100.jpg" alt="Chris McGown">
+                                  </div>
+                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11">
+                  <div class="pt-2 mt-0 ">
+                    <h5>Chris McGown</h5>
+                    <i class="author-title mb-0 subtitle">Co-Founder, Gold Medal Squared</i>
+                  </div>       
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+          <hr class="m-0 mt-3 pb-3">
+          <div class="author-biography"><p>Chris got his first experience coaching volleyball in 1991, working alongside his father Carl doing High School summer camps.&nbsp; &nbsp;Working each summer with&nbsp;those&nbsp;youth teams put in place an early love for seeing players improve, and an appreciation for how much could be accomplished with good coaching.</p><p>After almost a decade working in the corporate world as an engineer, Chris found his way back into coaching in 2003, when he joined Gold Medal Squared full-time.&nbsp; &nbsp;He spent 2009-2015 as a coach at BYU, returning to the school where he was a player in the 90s.&nbsp; &nbsp;He spent two years as a volunteer with the women&#39;s program, and four years as the head coach of the men&#39;s program.&nbsp; &nbsp;In 2013, he was named the AVCA National Coach of the Year.&nbsp; &nbsp;<br /><br />In addition to heading up our Coaching Clinic products at GMS, Chris currently consults and occasionally coaches with teams at every level.&nbsp; &nbsp;JHS, HS, Club, NCAA programs, professional, and National Teams.&nbsp; &nbsp;Most recently, he was an assistant coach with the Netherlands women&#39;s national team, where they were silver medalists at the 2017&nbsp;European Championships.&nbsp; &nbsp;</p><p>&nbsp;&nbsp;</p></div>
+        </div>
+      </div>
+        </div>
+  </div>
+</div>
+
+</div>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8 col-sm-5 col-md-offset-7">
+            </div>
+        </div>
+    </div>
+    </footer>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState === 'complete') {
+            const footer = document.querySelector('.main-footer');
+            footer.classList = 'main-footer show'; 
+        }
+    }
+</script>
+  <section ng-include="appCtrl.isRegisterStaff() ? 'https://www.goldmedalsquared.com/register-staff' : ''"></section>
+      <div id="register"
+    ng-controller="RegisterController as $registerCtrl"
+    ng-init="
+
+    $registerCtrl.path = 'camp';
+
+    $registerCtrl.paths = {
+        camp: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-school-location',
+            'coach-primary-contact',
+            'coach-camp-dates',
+            'coach-camp-success'
+        ],
+        clinic: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-primary-contact',
+            'coach-clinic-location',
+            'coach-clinic-credit-card',
+            'coach-clinic-success'
+        ],
+        private: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-primary-contact',
+            'coach-club-dates',
+            'coach-private-success'
+        ],
+        weekend: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-primary-contact',
+            'coach-club-dates',
+            'coach-weekend-success'
+        ],
+        athlete: [
+            'all-start',
+            'all-have-account',
+            'athlete-start',
+            'athlete-details',
+            'athlete-parent',
+            'athlete-credit-card',
+            'athlete-success'
+        ],
+        toolbox: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-primary-contact',
+            'toolbox-pick-payment',
+            'toolbox-payment-plans',
+            'toolbox-credit-card',
+            'toolbox-success'
+        ],
+        courses: [
+            'all-start',
+            'all-have-account',
+            'coach-start',
+            'coach-primary-contact',
+            'toolbox-pick-payment',
+            'toolbox-payment-plans',
+            'toolbox-credit-card',
+            'courses-success'
+        ]
+    };
+
+    $registerCtrl.routes.post = {
+        register: 'https://www.goldmedalsquared.com/api/register',
+        'register-load-options-months': 'https://www.goldmedalsquared.com/api/register/months',
+        'register-load-options-states': 'https://www.goldmedalsquared.com/api/register/states',
+        'register-load-options-cities': 'https://www.goldmedalsquared.com/api/register/cities',
+        'register-load-options-camps': 'https://www.goldmedalsquared.com/api/register/camps',
+        'register-load-parent': 'https://www.goldmedalsquared.com/api/register/logged-contact-info',
+        'register-load-athletes': 'https://www.goldmedalsquared.com/api/register/children',
+        'register-load-school': 'https://www.goldmedalsquared.com/api/register/user-school-club',
+        'register-load-primary-contact': 'https://www.goldmedalsquared.com/api/register/user-contact',
+        'register-load-options-clinic-locations': 'https://www.goldmedalsquared.com/api/register/clinic-locations',
+        'register-load-clinic-price': 'https://www.goldmedalsquared.com/api/register/clinic-price',
+        'register-load-options-camp-year': 'https://www.goldmedalsquared.com/api/register/camp-years',
+        'register-load-pay-for-additional-coaches': 'https://www.goldmedalsquared.com/api/register/coaches-by-program',
+    };
+
+    $registerCtrl.helper.options.coachRegisterFor = {
+        camp: 'Host a Summer Camp',
+        clinic: 'Attend a Coaches Clinic',
+        private: 'Host a Private Clinic for your Club Coaches',
+        weekend: 'Host a Fall/Winter Weekend Camp for your Players',
+        toolbox: 'Register to GMS+'
+    };
+
+    $registerCtrl.helper.options.athleteRegisterFor = {
+        summer: 'GMS Summer Camp',
+        weekend: 'Fall/Winter Weekend Camp, or Beach Camp',
+    };
+
+    $registerCtrl.helper.options.gender = options.gender;
+
+    $registerCtrl.helper.options.driveTimeFromAirport = {
+        15: '15 Min',
+        30: '30 Min',
+        45: '45 Min',
+        60: '1 Hour',
+        75: '1 Hour and 15 Min',
+        90: '1 Hour and 30 Min',
+        105: '1 Hour and 45 Min',
+        120: '2 Hours',
+        150: '2 Hours and 30 Min',
+        180: '3 Hours',
+        more: 'More Than 3 Hours',
+    };
+
+    $registerCtrl.helper.options.numberOfAthletes = {
+        24: '24 (minimum)',
+        36: '36 Athletes',
+        48: '48 Athletes',
+        60: '60 Athletes',
+        72: '72 Athletes',
+        more: 'More Than 72 Athletes',
+    };
+
+    $registerCtrl.helper.options.numberOfCoaches = {
+        20: '20 (minimum)',
+        25: '25 Coaches',
+        30: '30 Coaches',
+        more: 'More Than 30 Coaches',
+    };
+
+    $registerCtrl.helper.options.size = options.sizes;
+
+    $registerCtrl.helper.options.dobMonth = {
+                    1: 1,
+                    2: 2,
+                    3: 3,
+                    4: 4,
+                    5: 5,
+                    6: 6,
+                    7: 7,
+                    8: 8,
+                    9: 9,
+                    10: 10,
+                    11: 11,
+                    12: 12,
+            };
+
+    $registerCtrl.helper.options.dobDay = {
+                    1: 1,
+                    2: 2,
+                    3: 3,
+                    4: 4,
+                    5: 5,
+                    6: 6,
+                    7: 7,
+                    8: 8,
+                    9: 9,
+                    10: 10,
+                    11: 11,
+                    12: 12,
+                    13: 13,
+                    14: 14,
+                    15: 15,
+                    16: 16,
+                    17: 17,
+                    18: 18,
+                    19: 19,
+                    20: 20,
+                    21: 21,
+                    22: 22,
+                    23: 23,
+                    24: 24,
+                    25: 25,
+                    26: 26,
+                    27: 27,
+                    28: 28,
+                    29: 29,
+                    30: 30,
+                    31: 31,
+            };
+
+    $registerCtrl.helper.options.dobYear = [
+                    2019,
+                    2018,
+                    2017,
+                    2016,
+                    2015,
+                    2014,
+                    2013,
+                    2012,
+                    2011,
+                    2010,
+                    2009,
+                    2008,
+                    2007,
+                    2006,
+                    2005,
+                    2004,
+                    2003,
+                    2002,
+                    2001,
+                    2000,
+                    1999,
+                    1998,
+                    1997,
+                    1996,
+                    1995,
+                    1994,
+                    1993,
+                    1992,
+                    1991,
+                    1990,
+                    1989,
+                    1988,
+                    1987,
+                    1986,
+                    1985,
+                    1984,
+                    1983,
+                    1982,
+                    1981,
+                    1980,
+                    1979,
+                    1978,
+                    1977,
+                    1976,
+                    1975,
+                    1974,
+                    1973,
+                    1972,
+                    1971,
+                    1970,
+                    1969,
+                    1968,
+                    1967,
+                    1966,
+                    1965,
+                    1964,
+                    1963,
+                    1962,
+                    1961,
+                    1960,
+                    1959,
+                    1958,
+                    1957,
+                    1956,
+                    1955,
+                    1954,
+                    1953,
+                    1952,
+                    1951,
+                    1950,
+                    1949,
+                    1948,
+                    1947,
+                    1946,
+                    1945,
+                    1944,
+                    1943,
+                    1942,
+                    1941,
+                    1940,
+                    1939,
+                    1938,
+                    1937,
+                    1936,
+                    1935,
+                    1934,
+                    1933,
+                    1932,
+                    1931,
+                    1930,
+                    1929,
+                    1928,
+                    1927,
+                    1926,
+                    1925,
+                    1924,
+                    1923,
+                    1922,
+                    1921,
+                    1920,
+                    1919,
+            ];
+
+    $registerCtrl.helper.options.allStates = options.allStates;
+
+    $registerCtrl.helper.options.phoneProvider = options.phoneProvider;
+
+    $registerCtrl.helper.options.payment = options.payments;
+    $registerCtrl.helper.options.athletesPayments = options.athletesPayments;
+
+    $registerCtrl.helper.options.expMonth = {
+                    1: 1,
+                    2: 2,
+                    3: 3,
+                    4: 4,
+                    5: 5,
+                    6: 6,
+                    7: 7,
+                    8: 8,
+                    9: 9,
+                    10: 10,
+                    11: 11,
+                    12: 12,
+            };
+
+    $registerCtrl.helper.options.expYear = {
+                    2019: 2019,
+                    2020: 2020,
+                    2021: 2021,
+                    2022: 2022,
+                    2023: 2023,
+                    2024: 2024,
+                    2025: 2025,
+                    2026: 2026,
+                    2027: 2027,
+                    2028: 2028,
+                    2029: 2029,
+            };
+
+    $registerCtrl.helper.options.coachingExperience = {
+        new: 'I am a brand new volleyball coach with less than two years experience',
+        yes: 'I\'m an experienced coach and have previously attending a GMS Clinic',
+        no: 'I\'m an experienced coach and have never attended a GMS clinic',
+    };
+
+    $registerCtrl.helper.options.clinicTypes = {
+        indoor: 'Indoor Clinic',
+        beach: 'Beach Clinic'
+    };
+
+    $registerCtrl.helper.options.howDidYouHearAboutUs = {
+        'word-of-mouth': 'Word of Mouth',
+        brochure: 'Brochure',
+        email: 'Email',
+        'web-search': 'Web Search',
+        'coaching-client': 'Coaching Client',
+        'return-client': 'Return Client',
+        other: 'Other',
+    };
+
+    $registerCtrl.helper.options.payForAdditionalCoaches = {
+        no: 'No, just me!',
+        yes: 'Yes, I want to pay for already registered coaches from my program',
+    };
+
+    $registerCtrl.helper.dates = {
+            campStartDate: '-05-01',
+        campEndDate: '-09-30',
+
+                    clubStartDate: '2019-08-05',
+        
+        clubEndDate: '2020-05-04',
+    };
+
+    $registerCtrl.stripePublishableKey = {
+        'coach-clinic-credit-card': 'pk_live_tg4pJXK4i4IRGVKhRsA3C7fB',
+        'athlete-credit-card': 'pk_live_9Bwvjmiz7trUmmmQWc8YWSZ6',
+        'toolbox-credit-card': 'pk_live_Y7jv91cetR8Je2fM71002nmu'
+    };
+">
+  <div class="modal fade reg_modal jsRegistrationModal force-no-transform admin gms_theme" id="registrationProcessModals">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-body">
+                  <div class="wrap_modal tab-content">
+                      <button type="button" class="close" data-dismiss="modal">
+                          <svg x="0px" y="0px" viewBox="0 0 19 19" style="enable-background:new 0 0 19 19;" xml:space="preserve">
+  							<style type="text/css">
+                                  .close_modal{fill:#69BCEB;}
+                              </style>
+                              <g>
+                                  <g>
+                                      <path class="close_modal" d="M12.4,9.5l6.3-6.3c0.2-0.2,0.2-0.4,0-0.5l-2.3-2.3c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0.1L9.5,6.6
+  										L3.2,0.3C3,0.2,2.8,0.2,2.6,0.3L0.3,2.6C0.1,2.8,0.1,3,0.3,3.2l6.3,6.3l-6.3,6.3c-0.2,0.2-0.2,0.4,0,0.5l2.3,2.3
+  										c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1l6.3-6.3l6.3,6.3c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1l2.3-2.3
+  										c0.2-0.2,0.2-0.4,0-0.5L12.4,9.5z"/>
+                                  </g>
+                              </g>
+  							</svg>
+                      </button>
+
+                        <div ng-show="isSlideActive('all-start')" class="first_step jsStep text-center fade active show step_1 jsCheckboxsList">
+    <h3 class="title">GMS Registration Center</h3>
+    <form novalidate name="typeForm">
+        <ul class="list-unstyled controls_list">
+            <li>
+                <label class="custom-control custom_control custom-radio active jsTypeRegister jsFirstCheckbox jsCheckbox" data-register="coach">
+                                            <span class="custom-control-description">
+                                                <span class="wrap_top_title">
+                                                    <input name="radio" type="radio" checked="checked" value="coach" ng-model="$registerCtrl.data['all-start'].type" ng-click="$registerCtrl.selectPathOnAllStart()" class="custom-control-input" ng-required="true">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="title_control">I'm a coach, club director or camp coordinator</span>
+                                                      <span class="icon_control coaches_icon"><svg viewBox="0 0 39 44"><use xlink:href="#coaches-ic"></use></svg></span>
+                                                </span>
+                                            </span>
+                </label>
+            </li>
+            <li>
+                <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="athlete">
+                                          <span class="custom-control-description">
+                                              <span class="wrap_top_title">
+                                                  <input name="radio" type="radio" value="athlete" ng-model="$registerCtrl.data['all-start'].type" ng-click="$registerCtrl.selectPathOnAllStart()" class="custom-control-input" ng-required="true">
+                                                  <span class="custom-control-indicator"></span>
+                                                  <span class="title_control">I'm an athlete/ parent</span>
+                                                  <span class="icon_control athletes_icon">
+                                                      <svg viewBox="0 0 52.7 52.7"><use xlink:href="#user_svg"></use></svg>
+                                                  </span>
+                                              </span>
+                                          </span>
+                </label>
+            </li>
+        </ul>
+        <div class="wrap_btns text-center">
+            <button class="btn" ng-click="$registerCtrl.next()" ng-disabled="typeForm.$invalid">Continue</button>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('all-have-account')" class="second_step jsStep text-center login_step">
+    <h3>Login to Your GMS Portal</h3>
+    <p>Even if your account or trial has expired, please, try to log in before registering</p>
+    <section register-validation error="loginFailed" method="$registerCtrl.clearValidationError(key)">
+        <form class="login_form max_w_355" novalidate name="loginForm">
+            <div class="form-group">
+                <input type="email" class="form-control" ng-required="true" ng-model="$registerCtrl.dataLogin.email" placeholder="Enter email address...">
+            </div>
+            <div class="form-group">
+                <input type="password" ng-required="true" ng-model="$registerCtrl.dataLogin.password" class="form-control" placeholder="Enter password...">
+            </div>
+            <span class="help_links text_bold forgot_links">Forgot password?</span>
+            <div class="wrap_btns text-center">
+                <div class="wrap_btn"><button ng-click="$registerCtrl.login()" ng-disabled="loginForm.$invalid" class="btn">Log in</button></div>
+            </div>
+        </form>
+    </section>
+
+    <p class="help_links">I'm a first time user. <a href="#" class="text_bold d_inline_flex_center jsStepBtn" ng-click="$registerCtrl.next()">Continue without logging in <span class="icon_arrow"><svg viewBox="0 0 13 17"><use xlink:href="#right-arrow"></use></svg></span></a></p>
+</div>                        <div ng-show="isSlideActive('coach-start')" class="second_step jsStep text-center step_3 jsCheckboxsList">
+    <h3>Which would you like to register for?</h3>
+    <p>Select options from the list below</p>
+    <div class="wrap_rows">
+        <form novalidate name="registerFormForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled controls_list">
+                        <li>
+                            <label class="custom-control custom_control custom-radio active jsTypeRegister jsCheckbox" data-register="camps">
+                                <span class="custom-control-description">
+                                    <span class="wrap_top_title">
+                                        <input name="registerFor" checked="checked" type="radio" value="camp" class="custom-control-input" ng-model="$registerCtrl.data['coach-start']['register_for']" required>
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="title_control">Schedule a Summer Camp</span>
+                                    </span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="gms">
+                                <span class="custom-control-description">
+                                    <span class="wrap_top_title">
+                                        <input name="registerFor" type="radio" value="toolbox" class="custom-control-input" ng-model="$registerCtrl.data['coach-start']['register_for']" required>
+
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="title_control">
+                                            <span ng-hide="getUser().hasRole('toolbox')">Register to GMS+ or&nbsp;</span>Purchase Courses
+                                        </span>
+                                    </span>
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled controls_list">
+                        <li>
+                            <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="clinic">
+                                <span class="custom-control-description">
+                                    <span class="wrap_top_title">
+                                        <input name="registerFor" type="radio" value="clinic" class="custom-control-input" ng-model="$registerCtrl.data['coach-start']['register_for']" required>
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="title_control">Attend an indoor, or beach coaches clinic</span>
+                                    </span>
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="events">
+                                <span class="custom-control-description">
+                                    <span class="wrap_top_title">
+                                        <input name="registerFor" type="radio" value="weekend" class="custom-control-input" ng-model="$registerCtrl.data['coach-start']['register_for']" required>
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="title_control">Schedule a Club or Beach Weekend Event</span>
+                                    </span>
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrap_btns text-center">
+                <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+                <div class="wrap_btn"><button ng-click="$registerCtrl.next()" ng-disabled="registerFormForm.$invalid" class="btn">Continue</button></div>
+            </div>
+        </form>
+    </div>
+</div>
+                        <div ng-show="isSlideActive('athlete-start')" class="jsStep text-center athlete_step_2">
+    <h3>Search For Your Camp Location</h3>
+    <form novalidate name="athleteCampForm">
+        <div class="max_w_355">
+            <div class="form-group">
+                <select class="custom-select form-control" ng-change="prepareNextSelects('months', 'month','state', 'city', 'camp')" required ng-model="$registerCtrl.data['athlete-start'].register_for">
+                    'states',                                 <option selected="true" disabled="disabled" value="">I want to register for an upcoming ...</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.athleteRegisterFor | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.data['athlete-start'].register_for">
+                <select class="custom-select form-control" ng-change="prepareNextSelects('states', 'state', 'city', 'camp')" required ng-model="$registerCtrl.data['athlete-start'].month">
+                    'cities',                                       <option selected="true" disabled="disabled" value="">Select Event Month</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.months | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.data['athlete-start'].month">
+                <select class="custom-select form-control" ng-change="prepareNextSelects('cities', 'city', 'camp')" required ng-model="$registerCtrl.data['athlete-start'].state">
+                    <option selected="true" disabled="disabled" value="">What State is the Event Located In?</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.states | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.data['athlete-start'].state">
+                <select class="custom-select form-control" ng-change="prepareNextSelects('camps', 'camp')" required ng-model="$registerCtrl.data['athlete-start'].city">
+                    <option selected="true" disabled="disabled" value="">What City is the Event Located In?</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.cities | orderBy:'toString()'"
+                            ng-bind="label" ng-value="label"></option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.data['athlete-start'].city">
+                <select class="custom-select form-control" ng-change="$registerCtrl.loadAthletes();$registerCtrl.selectCamp();" required ng-model="$registerCtrl.data['athlete-start'].camp">
+                    <option selected="true" disabled="disabled" value="">Search Results Appear Here</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.camps | orderBy:'toString()'"
+                            ng-bind="label.name" ng-value="value"></option>
+                </select>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button ng-click="$registerCtrl.next()" ng-disabled="athleteCampForm.$invalid" class="btn">Continue</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('athlete-details')" class="jsStep text-center  athlete_step_3">
+    <h3><span ng-bind="$registerCtrl.helper.camp.name"></span> - Athlete Details</h3>
+    <p>Location:
+        <span ng-bind="$registerCtrl.helper.camp.address_1"></span>
+        <span ng-if="$registerCtrl.helper.camp.address_2">, {% $registerCtrl.helper.camp.address_2 %}</span>
+    </p>
+    <p>Start day: <span ng-bind="$registerCtrl.helper.camp.start | date:'fullDate'"></span></p>
+    <p>End day: <span ng-bind="$registerCtrl.helper.camp.end | date:'fullDate'"></span></p>
+    <form novalidate name="formAthleteDetails" register-athlete-details>
+        <div ng-repeat="i in athleteCount() track by $index">
+            <p class="count_athlete text_grey">{% $index + 1 | ordinal %} Athlete</p>
+            <div class="max_w_355">
+                <div class="form-group">
+                    <select class="custom-select form-control" ng-change="$registerCtrl.data['athlete-details'][$index] = $registerCtrl.helper.options['athletes'][$registerCtrl.data['athlete-details'][$index]['athletes']]" ng-model="$registerCtrl.data['athlete-details'][$index].athletes">
+                        <option selected="true" disabled="disabled" value="">Select Already Registered Athlete</option>
+                        <option ng-repeat="(value, label) in $registerCtrl.helper.options.athletes | orderBy:'toString()'"
+                                ng-bind="label.label" ng-value="value"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name" required ng-model="$registerCtrl.data['athlete-details'][$index].first_name" append-validation-message>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" required ng-model="$registerCtrl.data['athlete-details'][$index].last_name" append-validation-message>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <select class="custom-select form-control" value="" required ng-model="$registerCtrl.data['athlete-details'][$index].dob_month" ng-options="month for month in $registerCtrl.helper.options.dobMonth" append-validation-message>
+                            <option selected="true" disabled="disabled" value="">Month</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['athlete-details'][$index].dob_day" ng-options="day for day in $registerCtrl.helper.options.dobDay">
+                            <option selected="true" disabled="disabled" value="">Day</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['athlete-details'][$index].dob_year" ng-options="year for year in $registerCtrl.helper.options.dobYear" append-validation-message>
+                            <option selected="true" disabled="disabled" value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['athlete-details'][$index].gender" ng-options="value as gender for (value, gender) in $registerCtrl.helper.options.gender" append-validation-message>
+                        <option selected="true" disabled="disabled" value="">Gender</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['athlete-details'][$index].tshirt"  ng-options="value as size for (value, size) in $registerCtrl.helper.options.size" append-validation-message>
+                        <option selected="true" disabled="disabled" value="">T-Shirt Size</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Medical conditions" ng-model="$registerCtrl.data['athlete-details'][$index].medical_conditions" append-validation-message></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-link" ng-click="add()">More Athlete</button>
+            <button type="button" class="btn btn-link" ng-show="count > 1" ng-click="$registerCtrl.clearSlideData(count - 1); remove()">Less Athlete</button>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button ng-click="$registerCtrl.next(); $registerCtrl.loadParent()" ng-disabled="formAthleteDetails.$invalid" class="btn">Continue</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('athlete-parent')" class="jsStep text-center athlete_step_4">
+    <form name="athleteParentForm" novalidate>
+        <h3>Parent/Guardian Contact Information</h3>
+        <p>
+            {% $registerCtrl.helper.camp.name %}, {% $registerCtrl.helper.camp.start | date:'MMMM d' %} - {%
+            $registerCtrl.helper.camp.end | date:'MMMM d' %}, {% $registerCtrl.helper.camp.end | date:'yyyy'
+            %}
+        </p>
+        {% user %}
+        <div class="wrap_rows">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" ng-model="$registerCtrl.data['athlete-parent'].first_name" ng-value="appCtrl.tmp.first_name" required append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" ng-model="$registerCtrl.data['athlete-parent'].last_name" ng-value="appCtrl.tmp.last_name" required append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address 1" ng-model="$registerCtrl.data['athlete-parent'].address_1" required append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address 2" ng-model="$registerCtrl.data['athlete-parent'].address_2" append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="City" ng-model="$registerCtrl.data['athlete-parent'].city" required append-validation-message>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="custom-select form-control" required ng-model="$registerCtrl.data['athlete-parent'].state" ng-options="value as state for (value, state) in $registerCtrl.helper.options.allStates | orderBy:'toString()'">
+                                    <option selected="true" disabled="disabled" value="">State</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Zip Code" ng-model="$registerCtrl.data['athlete-parent'].zip_code" required append-validation-message>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email address (this will be your login ID)" ng-model="$registerCtrl.data['athlete-parent'].email" unique-email validate-email validate-unique-athlete required append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone" ng-model="$registerCtrl.data['athlete-parent'].phone" required append-validation-message>
+                    </div>
+                    <p ng-hide="$registerCtrl.isLoggedIn()">
+                        <small>You will manage all of your camp details through your GMS account. Please select a password
+                            below.</small>
+                    </p>
+                    <div class="form-group" ng-if="!$registerCtrl.isLoggedIn()">
+                        <input type="password" class="form-control" placeholder="Password" ng-required="!$registerCtrl.isLoggedIn()" ng-model="$registerCtrl.data['athlete-parent'].account_password">
+                    </div>
+                    <div class="form-group" ng-if="!$registerCtrl.isLoggedIn()">
+                        <input type="password" class="form-control" placeholder="Password confirmation" ng-required="!$registerCtrl.isLoggedIn()" register-pass-validation="$registerCtrl.data['athlete-parent'].account_password" ng-model="$registerCtrl.data['athlete-parent'].confirm_password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <p>
+                            Carefully read our athlete injury waiver terms and conditions below...
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <section class="iframe-info form-control text-left">
+                            <p>
+On behalf of my underage MINOR ATHLETE (hereafter referred to as “MINOR”), I HEREBY WAIVE AND RELEASE, indemnify, hold harmless and forever discharge GOLD MEDAL SQUARED WEST, INC., GOLD MEDAL SQUARED, INC. , GOLD MEDAL SQUARED LLC, and GOLD MEDAL SQUARED MEDIA, LLC, (hereafter referred to as “COMPANY”) and its agents, employees, officers, directors, contractors, affiliates, successors and assigns, of and from any and all claims, demands, debts, contracts, expenses, causes of action, lawsuits, damages and liabilities, of every kind and nature, whether known or unknown, in law or equity, that I or MINOR ever had or may have, arising from or in any way related to MINOR’S participation in any of the events or activities conducted by, on the premises of, or for the benefit of COMPANY, provided that this waiver of liability does not apply to any acts of gross negligence.
+</p>
+<p>
+I understand that the activities that said MINOR will participate in are inherently dangerous and may cause serious injuries, including bodily injury and/or death.  MINOR has the necessary and requisite skills to participate in all facets of, and activities of and relating to such physical activities.  Said MINOR is physically fit and has no known medical conditions which would prohibit participation in physical activities.  By this Waiver, I, on behalf of said MINOR, assume any risk, and take full responsibility and waive any claims of personal injury, death or damage associated with COMPANY, including but not limited to engaging in volleyball games, volleyball drills, volleyball practice, stretching, running, jumping, diving on the floor, using the facility and its equipment, engaging in volleyball tournaments or other related activities on and off the premises.
+</p>
+<p>
+This WAIVER AND RELEASE contains the entire agreement between the parties, and supercedes any prior written or oral agreements between them concerning the subject matter of this WAIVER AND RELEASE.  The provisions of this WAIVER AND RELEASE may be waived, altered, amended or repealed, in whole or in part, only upon the prior written consent of all parties.
+</p>
+<p>
+The provision of this WAIVER AND RELEASE will continue in full force and effect even after the termination of the activities conducted by, on the premises of, or for the benefit of COMPANY, whether by agreement, by operation of law, or otherwise. 		 
+</p>
+<p>
+I have read, understand and fully agree to the terms of this WAIVER AND RELEASE.  I understand and confirm that by executing this WAIVER AND RELEASE said MINOR and I have given up considerable future legal rights. I have signed this Agreement freely, voluntarily, under no duress or threat of duress, without inducement, promise or guarantee being communicated to me.  My signature is proof of my intention to execute a complete and unconditional WAIVER AND RELEASE of all liability to the full extent of the law.   
+</p>
+<p>
+I attest that I am eighteen (18) years old or older and that the said Minor(s) is physically fit and has no known medical conditions which prohibit participation in this volleyball camp. By checking this box and completing this online registration, I agree to the terms and conditions of this WAIVER and RELEASE Agreement.
+</p>                        </section>
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-control custom-radio registration-terms">
+                            <input type="checkbox" class="custom-control-input" value="1" ng-model="$registerCtrl.data['athlete-parent'].agree" required append-validation-message>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">
+                                                      <span class="title_control"><small>By checking this box I'm agreeing to the terms of this injury waiver, which I have read and understand.  I also confirm that I'm 18 years or older, or the legal parent/guardian of the registered athlete(s).</small></span>
+                                                  </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn" ng-hide="$registerCtrl.excludeFromPath['athlete-credit-card']"><button class="btn" ng-disabled="athleteParentForm.$invalid" ng-click="$registerCtrl.next()">Continue</button></div>
+            <div class="wrap_btn" ng-show="$registerCtrl.excludeFromPath['athlete-credit-card']"><button class="btn" ng-disabled="athleteParentForm.$invalid" ng-click="$registerCtrl.register()">Finish Registration</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('athlete-credit-card')" class="jsStep text-center athlete_step_5 billing_list">
+    <h3 class="text-center">Enter billing information</h3>
+    <div class="wrap_price_block">
+        <div class="desc_program">
+            <p class="text-uppercase">Total Price</p>
+            <span class="price"> ${% $registerCtrl.getPriceWithFee() %}</span>
+        </div>
+    </div>
+    <p class="small_help_text">* Please note we add 3% for processing</p>
+    <form class="billing_list" name="athleteCreditCardForm" novalidate>
+        <div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].cardNumber">
+    Card number is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].expMonth">
+    Exp. Month / Year is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].cvc">
+    3 Digit Code on Back of Card is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].stripe">
+    Payment system has rejected your payment data
+</div>
+
+
+<!-- <p ng-show="!!registerCtrl.validationErrors['athlete-credit-card']" class="error" ng-bind="registerCtrl.validationErrors['athlete-credit-card'].join('<br>')"></p> -->
+        <div class="alert alert-info" role="alert" ng-show="$registerCtrl.coupon"><strong>Coupon applied.</strong> You've got
+    <strong ng-if="$registerCtrl.coupon.type == '$'">{% $registerCtrl.coupon.discount | currency %}</strong>
+    <strong ng-if="$registerCtrl.coupon.type == '%'">{% $registerCtrl.coupon.discount %}&#37;</strong>
+    discount.
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.couponError" ng-bind="$registerCtrl.couponError"></div>        <div error="stripe" method="$registerCtrl.clearValidationError(key)">
+            <div class="form-group" ng-show="$registerCtrl.getPriceWithFeeRaw()">
+                <div register-validation error="cardNumber" method="registerCtrl.clearValidationError(key)">
+                    <label class="label_list label_block" for="card_number1">1. Card Number</label>
+                    <input type="text" id="card_number1" class="form-control card_number" placeholder="**** **** **** ****" required ng-model="$registerCtrl.dataPayment.card_number">
+                </div>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.getPriceWithFeeRaw()">
+                <label class="label_list label_block" for="expiration_date">2. Expiration date</label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="custom-select form-control col-md-5" required ng-model="$registerCtrl.dataPayment.exp_month">
+                            <option selected="true" disabled="disabled" value="">Exp. Month</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expMonth | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="custom-select form-control col-md-5" required ng-model="$registerCtrl.dataPayment.exp_year">
+                            <option selected="true" disabled="disabled" value="">Exp. Year</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expYear | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.getPriceWithFeeRaw()">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_list label_block" for="cvc3">3. CVC</label>
+                        <input type="text" id="cvc3" required class="form-control card_info" ng-minlength="3"
+                                   ng-maxlength="4" ng-model="$registerCtrl.dataPayment.cvc">
+                    </div>
+                    <div class="col-md-3">
+                        <div ng-show="$registerCtrl.getPriceWithFeeRaw()">
+                            <label class="label_list label_block" for="zip_code1">4. Billing ZIP code</label>
+                            <input type="text" id="zip_code1" class="form-control card_info" ng-model="$registerCtrl.data['athlete-credit-card'].billing_zip" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label_list label_block" for="coupon_code1">5. Coupon Code (not required)</label>
+                        <input type="text" id="coupon_code1" class="form-control" ng-change="$registerCtrl.fetchCoupon($registerCtrl.data['athlete-credit-card'].promo_code)" ng-model-options="{debounce: 750}" ng-model="$registerCtrl.data['athlete-credit-card'].promo_code" name="promo_code">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-if="$registerCtrl.getPriceWithFeeRaw()" ng-disabled="$registerCtrl.lockPaymentButton || athleteCreditCardForm.$invalid" ng-click="$registerCtrl.paymentAndRegister()">Finish Registration!</button></div>
+            <div class="wrap_btn"><button class="btn" ng-if="!$registerCtrl.getPriceWithFeeRaw()" ng-disabled="$registerCtrl.lockPaymentButton || athleteCreditCardForm.$invalid" ng-click="$registerCtrl.register()">Finish Registration!</button></div>
+        </div>
+        <div class="form-group">
+            <div ng-show="registerCtrl.showSpinner" class="text-center" style="margin-top: 15px">
+                <img src="https://www.goldmedalsquared.com/img/spinner.gif" />
+            </div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('athlete-success')" class="success_step jsStep text-center athlete_step_6">
+    <div class="relative">
+        <h3>Success!</h3>
+        <p>You have successfully registered for camp.  We have sent you an email with a link to all camp details.  You can also login to your account to view the same information.  As a reminder, GMS is not your primary point of contact moving forward.  Please direct your question to your head coach or local camp coordinator.</p>
+        <div class="wrap_btn text-center">
+            <a href="https://www.goldmedalsquared.com/dashboard" class="btn btn_primary blue">Proceed to my account</a>
+        </div>
+    </div>
+    <div class="bg_block">
+        <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+    </div>
+</div>
+                        <div ng-show="isSlideActive('coach-school-location')" class="jsStep text-center camp_step_1">
+    <h3>Your School Name &amp; Location</h3>
+    <p>The address provided below is where the camp will be held. It is also how your athletes will search and register for camp so accurate information is critical to running a great camp!</p>
+    <label class="custom-control custom-checkbox" ng-show="$registerCtrl.helper.school.name">
+        <input type="checkbox" class="custom-control-input" ng-model="$registerCtrl.data['coach-school-location'].use"
+               ng-click="$registerCtrl.copy($registerCtrl.data['coach-school-location'], $registerCtrl.helper.school, $registerCtrl.data['coach-school-location'].use);">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">
+            <span class="title_control">Use info from {% $registerCtrl.helper.school.name %}</span>
+        </span>
+    </label>
+    <form class="wrap_rows spacing4" novalidate name="schoolForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="High School or Club Name" ng-model="$registerCtrl.data['coach-school-location'].name" ng-required append-validation-message>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Address 1" ng-model="$registerCtrl.data['coach-school-location'].address_1" required append-validation-message>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Address 2" ng-model="$registerCtrl.data['coach-school-location'].address_2" append-validation-message>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="City (where camp is being held)" ng-model="$registerCtrl.data['coach-school-location'].city" required append-validation-message>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-school-location'].state" ng-options="value as state for (value, state) in $registerCtrl.helper.options.allStates | orderBy:'toString()'">
+                        <option selected="true" disabled="disabled" value="">Select State or Province</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Postal Code" ng-model="$registerCtrl.data['coach-school-location'].zip_code" required append-validation-message>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Country" ng-model="$registerCtrl.data['coach-school-location'].country" required append-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-school-location'].camp_year" ng-options="value as key for (key, value) in $registerCtrl.helper.options.campYear | orderBy:'toString()'">
+                        <option selected="true" disabled="disabled" value="">Camp Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Courts" class="form-control" ng-model="$registerCtrl.data['coach-school-location'].courts_in_gym" min="0" required>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-school-location'].number_of_athletes" ng-options="key as value for (key, value) in $registerCtrl.helper.options.numberOfAthletes">
+                        <option selected="true" disabled="disabled" value="">Estimated number of athletes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-school-location'].gender" ng-options="value as gender for (value, gender) in $registerCtrl.helper.options.gender | orderBy:'toString()'">
+                        <option selected="true" disabled="disabled" value="">Athlete gender</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Closest Major Airport" ng-model="$registerCtrl.data['coach-school-location'].airport" required>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-school-location'].drive_time" ng-options="key as value for (key, value) in $registerCtrl.helper.options.driveTimeFromAirport | orderBy:'toString()'">
+                        <option selected="true" disabled="disabled" value="">Drive time from the airport</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-click="$registerCtrl.prepareSchoolData(); $registerCtrl.next()" ng-disabled="schoolForm.$invalid">Continue</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('coach-primary-contact')" class="jsStep text-center camp_step_2">
+    <h3>Your Primary Contact Information</h3>
+    <form class="info_user_form wrap_rows spacing4" novalidate name="contactForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="wrap_block_info">
+                    <span class="title_block"><span class="icon_form"><svg viewBox="0 0 10 13"><use xlink:href="#personal-info-ic"></use></svg></span>Personal info</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" ng-model="$registerCtrl.data['coach-primary-contact'].first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" ng-model="$registerCtrl.data['coach-primary-contact'].last_name"  required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address" ng-model="$registerCtrl.data['coach-primary-contact'].email" required validate-email unique-email append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone Number" ng-model="$registerCtrl.data['coach-primary-contact'].phone" ng-minlength="3" required>
+                    </div>
+                    <div class="form-group" ng-show="!isPathActive('camp')">
+                        <input type="text" class="form-control" placeholder="Your club or school name" ng-required="isPathActive('clinic') || isPathActive('private')" ng-model="$registerCtrl.data['coach-primary-contact'].name" append-validation-message>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-primary-contact'].tshirt" ng-value="appCtrl.tmp.tshirt" ng-options="key as value for (key, value) in $registerCtrl.helper.options.size | orderBy:'toString()'">
+                            <option selected="true" disabled="disabled" value="">T-Shirt Size</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-primary-contact'].hoodie" ng-options="key as value for (key, value) in $registerCtrl.helper.options.size | orderBy:'toString()'">
+                            <option selected="true" disabled="disabled" value="">Hoodie Size</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+                <div class="wrap_block_info" ng-hide="$registerCtrl.isLoggedIn()">
+                    <span class="title_block"><span class="icon_form"><svg viewBox="0 0 10 13"><use xlink:href="#security-ic"></use></svg></span>Security</span>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" ng-model="$registerCtrl.data['coach-primary-contact'].account_password" name="account_password" ng-required="!$registerCtrl.isLoggedIn()" append-validation-message minlength="6">
+                        <small class="text-danger validation-message" ng-show="contactForm.account_password.$error.minlength">The password must be at least 6 characters.</small>
+                        <small class="text-danger validation-message" ng-show="contactForm.password_confirmation.$error.registerPassValidation">The password does not match the confirm password.</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirmation" ng-required="!$registerCtrl.isLoggedIn()" register-pass-validation="$registerCtrl.data['coach-primary-contact'].account_password" ng-model="$registerCtrl.data['coach-primary-contact'].confirm_password" append-validation-message>
+                    </div>
+                </div>
+                <div class="wrap_block_info">
+                    <span class="title_block"><span class="icon_form"><svg viewBox="0 0 9 12"><use xlink:href="#address-ic"></use></svg></span>Address</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="Address 1" ng-model="$registerCtrl.data['coach-primary-contact'].address_1" append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address 2" ng-model="$registerCtrl.data['coach-primary-contact'].address_2" append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="City" ng-model="$registerCtrl.data['coach-primary-contact'].city" append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-primary-contact'].state" ng-options="key as value for (key, value) in $registerCtrl.helper.options.allStates | orderBy:'toString()'">
+                            <option selected="true" disabled="disabled" value="">Select State or Province</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Postal Code" ng-model="$registerCtrl.data['coach-primary-contact'].zip_code" required append-validation-message>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Country" ng-model="$registerCtrl.data['coach-primary-contact'].country" required append-validation-message>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn" ng-hide="$registerCtrl.hideBackButton"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-click="$registerCtrl.next(); $registerCtrl.loadDataForNextStep();" ng-disabled="contactForm.$invalid">Continue</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('coach-camp-dates')" class="jsStep text-center camp_step_3">
+    <h3>Request Your Camp Dates</h3>
+    <p>Our camps begin on Monday and finish on Thursday. Please select your start date below. If you need to modify this schedule select the best week and then email us your requests. We are happy to adjust the schedule if necessary.</p>
+    <form novalidate name="campDatesForm">
+        <section register-calendar class="calendar clearifx" selectable="2">
+            <div class="main-div-conts-inner-center">
+                <div class="form-group">
+                    <div ng-show="isSelected('1')">
+                        <div class="span1-11">
+                            <p class="title">Your <strong>primary</strong> date request</p>
+                        </div>
+                        <div class="row primary justify-content-center">
+                            <div class="col-md-8">
+
+                                <datepicker visible-on-load date-format="yyyy-MM-dd" date-set-hidden="true"
+                                            date-set="{% getNextMonday(($registerCtrl.data['coach-school-location'].camp_year == $registerCtrl.helper.today.getFullYear() || !$registerCtrl.data['coach-school-location'].camp_year) ? firstAvailableCampDate() : ($registerCtrl.data['coach-school-location'].camp_year + $registerCtrl.helper.dates.campStartDate)) | date: 'yyyy-MM-dd' %}"
+                                            date-min-limit="{% $registerCtrl.data['coach-school-location'].camp_year + $registerCtrl.helper.dates.campStartDate %}"
+                                            date-max-limit="{% $registerCtrl.data['coach-school-location'].camp_year + $registerCtrl.helper.dates.campEndDate %}">
+                                    <input type="text" ng-hide="true" ng-model="primary_start_date" ng-change="week('primary', primary_start_date) ? $registerCtrl.data['coach-camp-dates'].primary_start_date = primary_start_date : ''">
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="isSelected('2')">
+                        <div class="span1-11">
+                            <p class="title">Your <strong>secondary</strong> date request</p>
+                        </div>
+                        <div class="span11 secondary justify-content-center row">
+                            <div class="col-md-8">
+                                <datepicker visible-on-load date-format="yyyy-MM-dd" date-set-hidden="true"
+                                            date-set="{% $registerCtrl.data['coach-camp-dates'].primary_start_date | date: 'yyyy-MM-dd' %}"
+                                            date-min-limit="{% $registerCtrl.data['coach-school-location'].camp_year + $registerCtrl.helper.dates.campStartDate %}"
+                                            date-max-limit="{% $registerCtrl.data['coach-school-location'].camp_year + $registerCtrl.helper.dates.campEndDate %}">
+                                    <input type="text" ng-hide="true" ng-model="secondary_start_date" ng-change="week('secondary', secondary_start_date) ? $registerCtrl.data['coach-camp-dates'].secondary_start_date = secondary_start_date : ''">
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max_w_355">
+                    <div class="form-group">
+                        <input required type="text" readonly ng-click="setSelected('1')" class="fom-div register-form-el-width calender_input_div form-control" placeholder="Your Primary Week Dates Option" name="primary" ng-model="primary">
+                    </div>
+                    <div class="form-group">
+                        <input required type="text" readonly ng-click="setSelected('2')" class="fom-div register-form-el-width form-control" placeholder="Your Secondary Week Dates Option" name="secondary" ng-model="secondary">
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-camp-dates'].pay_now">
+                            <option selected="true" disabled="disabled" value="">Select Payment Option</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.athletesPayments | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn">
+                <button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button>
+            </div>
+            <div class="wrap_btn">
+                <button class="btn"
+                        ng-disabled="campDatesForm.$invalid"
+                        ng-click="$registerCtrl.register(); $registerCtrl.next()">Finish Registration!</button>
+            </div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('coach-camp-success')" class="success_step jsStep text-center camp_step_4">
+    <div class="relative">
+        <h3>Success!</h3>
+        <p>What's next? We have received your camp request and will be in touch shortly to discuss your dates.<br>Once we confirm dates you will have full access to you camp portal.</p>
+        <div class="wrap_btn text-center">
+            <a href="https://www.goldmedalsquared.com/dashboard" class="btn btn_primary blue">Proceed to my account</a>
+        </div>
+    </div>
+    <div class="bg_block">
+        <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+    </div>
+</div>
+                        <div ng-show="isSlideActive('coach-clinic-location')" class="jsStep text-center clinic_step_2">
+    <h3>Select a Clinic Location</h3>
+    <form novalidate name="clinicLocationForm">
+        <div class="max_w_355 spacing4">
+            <div class="form-group">
+                <select ng-change="$registerCtrl.reloadClinicLocations()" class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-location'].type">
+                    <option selected="true" disabled="disabled" value="">Select Type</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.clinicTypes"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-location'].location">
+                    <option selected="true" disabled="disabled" value="">Select Location</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.clinicLocations | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-location'].how_did_you_hear_about_us">
+                    <option selected="true" disabled="disabled" value="">How Did You Hear About Us?</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.howDidYouHearAboutUs | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-location'].coaching_experience">
+                    <option selected="true" disabled="disabled" value="">Coaching Experience</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.coachingExperience | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p>You can pay now via credit card or opt to pay later</p>
+            </div>
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-location'].payment" ng-change="$registerCtrl.excludeOnClinicLocation()">
+                    <option selected="true" disabled="disabled" value="">Select a payment option</option>
+                    <option ng-repeat="(value, label) in $registerCtrl.helper.options.payment | orderBy:'toString()'"
+                            ng-bind="label" ng-value="value"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <section class="iframe-info form-control text-left">
+                <p>
+I HEREBY WAIVE AND RELEASE, indemnify, hold harmless and forever discharge GOLD MEDAL SQUARED WEST, INC, GOLD MEDAL SQUARED, INC, GOLD MEDAL SQUARED, LLC, and GOLD MEDAL SQUARED MEDIA, LLC (hereafter referred to as “COMPANY”) and its agents, employees, officers, directors, contractors affiliates, successors and assigns, of and from any and all claims, demands, debts, contracts, expenses, causes of action, lawsuits, damages and liabilities, of every kind and nature, whether known or unknown, in law or equity, that I ever had or may have, arising from or in any way related to my participation in any of the events or activities conducted by, on the premises of, or for the benefit of COMPANY, provided that this waiver of liability does not apply to any acts of gross negligence, or intentional, willful or wanton misconduct.
+</p>
+<p>
+I understand that the activities I will participate in are inherently dangerous and may cause serious injuries, including bodily injury and/or death.  On behalf of myself, my heirs, assigns and next of kin, I waive all claims for damages, injuries and death sustained, that I may have against COMPANY the aforementioned released party to such activity.
+</p>
+<p>
+I agree that I have the necessary and requisite skills to participate in all facets of, and activities of and relating to such physical activities. The nature of the activities has been fully disclosed and it is understood that there are risks associated with such activities and by participating I am assuming the risk of such participation.  By this Waiver, I assume any risk, and take full responsibility and waive any claims of personal injury, death or damage associated with COMPANY, including but not limited to engaging in volleyball games, volleyball practice, using a facility/gym and its equipment, participating in a volleyball coaches clinic, or participating in a volleyball camp.  
+</p>
+<p>
+    PHOTO RELEASE. By signing this agreement I am giving Gold Medal Squared permission to use any photographs provided to them of a team, athlete, coach, group or club for their website, brochures, social media, or any other promotional material.  Furthermore, photographers or individuals within the photographs will not be entitled to any financial compensation under any circumstances.  
+</p>
+<p>
+This WAIVER AND RELEASE contains the entire agreement between the parties, and supercedes any prior written or oral agreements between them concerning the subject matter of this WAIVER AND RELEASE.  The provisions of this WAIVER AND RELEASE may be waived, altered, amended or repealed, in whole or in part, only upon the prior written consent of all parties.
+</p>
+<p>
+The provision of this WAIVER AND RELEASE will continue in full force and effect even after the termination of the activities conducted by, on the premises of, or for the benefit of COMPANY, whether by agreement, by operation of law, or otherwise. 		 		 
+</p>
+<p>
+I have read, understand and fully agree to the terms of this WAIVER AND RELEASE.  I understand and confirm that by executing this WAIVER AND RELEASE I have given up considerable future legal rights. I have signed this Agreement freely, voluntarily, under no duress or threat of duress, without inducement, promise or guarantee being communicated to me.  My signature is proof of my intention to execute a complete and unconditional WAIVER AND RELEASE of all liability to the full extent of the law.   
+</p>
+<p>
+   I attest that I am eighteen (18) years old or older and that I am physically fit and have no known medical conditions which prohibit participation in this sport.   By checking this box, I agree to the terms and conditions of this WAIVER and RELEASE Agreement.
+</p>            </section>
+        </div>
+        <label class="custom-control checkbox_img">
+            <input name="radio" type="checkbox" checked="checked" class="custom-control-input" value="agreed" required ng-model="$registerCtrl.data['coach-clinic-location'].terms_and_conditions">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">I have read and agree to the terms of this waiver</span>
+        </label>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-show="$registerCtrl.data['coach-clinic-location'].payment == 'card'" ng-click="$registerCtrl.next(); $registerCtrl.loadClinicPrice();" ng-disabled="clinicLocationForm.$invalid">Continue</button></div>
+            <div class="wrap_btn" ng-show="$registerCtrl.data['coach-clinic-location'].payment != 'card'"><button class="btn" ng-disabled="clinicLocationForm.$invalid" ng-click="$registerCtrl.register()">Finish Registration</button></div>
+        </div>
+
+    </form>
+</div>                        <div ng-show="isSlideActive('coach-clinic-credit-card')" class="jsStep text-center clinic_step_3">
+    <h3 class="text-center">Enter billing information</h3>
+
+    <form class="billing_list" novalidate name="clinicCreditCardForm">
+        <div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].cardNumber">
+    Card number is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].expMonth">
+    Exp. Month / Year is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].cvc">
+    3 Digit Code on Back of Card is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['athlete-credit-card'].stripe">
+    Payment system has rejected your payment data
+</div>
+
+
+<!-- <p ng-show="!!registerCtrl.validationErrors['athlete-credit-card']" class="error" ng-bind="registerCtrl.validationErrors['athlete-credit-card'].join('<br>')"></p> -->
+        <div class="alert alert-info" role="alert" ng-show="$registerCtrl.coupon"><strong>Coupon applied.</strong> You've got
+    <strong ng-if="$registerCtrl.coupon.type == '$'">{% $registerCtrl.coupon.discount | currency %}</strong>
+    <strong ng-if="$registerCtrl.coupon.type == '%'">{% $registerCtrl.coupon.discount %}&#37;</strong>
+    discount.
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.couponError" ng-bind="$registerCtrl.couponError"></div>        <div class="form-group text-center pay_coaches">
+            <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches">
+                <option selected="true" disabled="disabled" value="">Do you want to pay for additional coaches?</option>
+                <option ng-repeat="(value, label) in $registerCtrl.helper.options.payForAdditionalCoaches | orderBy:'toString()'"
+                        ng-bind="label" ng-value="value"></option>
+            </select>
+        </div>
+        <div class="form-group text-center" ng-show="$registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches == 'yes'">
+            <input type="text" class="form-control col-md-7 "
+                   placeholder="Coach's first or last name"
+                   ng-model="$registerCtrl.data['coach-clinic-credit-card'].search"
+                   ng-change="$registerCtrl.payForAdditionalCoaches()">
+
+        </div>
+        <div class="form-group text-center" ng-show="$registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches == 'yes'">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pay-for-additional-coaches">
+                        <div ng-repeat="(value, label) in $registerCtrl.helper.payForAdditionalCoachesSelected"
+                             ng-show="$registerCtrl.data['coach-clinic-credit-card'].additional_coaches[value]">
+                            <input id="pay-for-additional-coaches-selected-{% value %}" type="checkbox"
+                                   ng-checked="$registerCtrl.data['coach-clinic-credit-card'].additional_coaches[value]"
+                                   ng-click="$registerCtrl.removeAdditionalCoach(value); $registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches_how_many = $registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches_how_many - 1">
+                            <label for="pay-for-additional-coaches-selected-{% value %}"
+                                   class="chechbox-content-hide-on-false">{% label %}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="pay-for-additional-coaches">
+                        <div ng-repeat="(value, label) in $registerCtrl.helper.payForAdditionalCoaches"
+                             ng-hide="$registerCtrl.data['coach-clinic-credit-card'].additional_coaches[value]">
+                            <input id="pay-for-additional-coaches-{% value %}" type="checkbox"
+                                   ng-true-value="{% value %}"
+                                   ng-model="$registerCtrl.data['coach-clinic-credit-card'].additional_coaches[value]"
+                                   ng-click="$registerCtrl.helper.payForAdditionalCoachesSelected[value] = $registerCtrl.helper.payForAdditionalCoaches[$registerCtrl.data['coach-clinic-credit-card'].additional_coaches[value]]; $registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches_how_many = $registerCtrl.data['coach-clinic-credit-card'].pay_for_additional_coaches_how_many + 1">
+                            <label for="pay-for-additional-coaches-{% value %}">{% label %}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_price_block">
+            <div class="desc_program">
+                <p class="text-uppercase">Total Price</p>
+                <span class="price">${% $registerCtrl.getPriceWithFee('clinic') ? $registerCtrl.getPriceWithFee('clinic') : 0 %}</span>
+            </div>
+        </div>
+
+        <div error="stripe" method="$registerCtrl.clearValidationError(key)">
+            <div class="form-group" ng-show="$registerCtrl.getPriceWithFeeRaw('clinic')">
+                <div register-validation error="cardNumber" method="$registerCtrl.clearValidationError(key)">
+                    <label class="label_list label_block" for="card_number2">1. Card Number</label>
+                    <input type="text" id="card_number2" class="form-control card_number" placeholder="**** **** **** ****" required ng-model="$registerCtrl.dataPayment.card_number">
+                </div>
+            </div>
+            <div class="form-group" ng-show="$registerCtrl.getPriceWithFeeRaw('clinic')">
+                <label class="label_list label_block" for="expiration_date">2. Expiration date</label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.dataPayment.exp_month">
+                            <option selected="true" disabled="disabled" value="">Exp. Month</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expMonth | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.dataPayment.exp_year">
+                            <option selected="true" disabled="disabled" value="">Exp. Year</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expYear | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_list label_block" for="cvc1">3. CVC</label>
+                        <input type="text" id="cvc1" required class="form-control card_info" ng-minlength="3"
+                               ng-maxlength="4" ng-model="$registerCtrl.dataPayment.cvc">
+                    </div>
+                    <div class="col-md-3" ng-show="$registerCtrl.getPriceWithFeeRaw('clinic')">
+                        <label class="label_list label_block" for="zip_code2">4. Billing ZIP code</label>
+                        <input type="text" id="zip_code2" class="form-control card_info" ng-model="$registerCtrl.data['athlete-credit-card'].billing_zip" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label_list label_block" for="coupon_code2">5. Coupon Code (not required)</label>
+                        <input type="text" id="coupon_code2" class="form-control" ng-change="$registerCtrl.fetchCoupon($registerCtrl.data['athlete-credit-card'].promo_code)" ng-model-options="{debounce: 750}" ng-model="$registerCtrl.data['athlete-credit-card'].promo_code" name="promo_code">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div ng-show="$registerCtrl.showSpinner" class="text-center" style="margin-top: 15px">
+                <img src="https://www.goldmedalsquared.com/img/spinner.gif" />
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btns text-center">
+                <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+                <button ng-if="$registerCtrl.getPriceWithFeeRaw('clinic')"
+                        type="button" class="btn"
+                        ng-disabled="clinicCreditCardForm.$invalid"
+                        ng-click="$registerCtrl.paymentAndRegister()">Finish Registration!
+                </button>
+                <button ng-if="!$registerCtrl.getPriceWithFeeRaw('clinic')"
+                        type="button" class="btn"
+                        ng-disabled="clinicCreditCardForm.$invalid"
+                        ng-click="$registerCtrl.register()">Finish Registration!
+                </button>
+            </div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('coach-clinic-success')" class="success_step jsStep text-center clinic_step_4">
+    <div class="relative">
+        <h3>Success!</h3>
+        <p>You can access the event details, make payments, view receipts and more by visiting your GMS account.</p>
+        <div class="wrap_btn text-center">
+            <a href="https://www.goldmedalsquared.com/dashboard" class="btn btn_primary blue">Proceed to my account</a>
+        </div>
+    </div>
+    <div class="bg_block">
+        <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+    </div>
+</div>
+                        <div ng-show="isSlideActive('toolbox-pick-payment')" class="jsStep text-center gms_step_1 jsCheckboxsList">
+    <h3 class="title">Select 1 option below</h3>
+    <form class="wrap_rows" name="billingTypeForm" novalidate>
+        <div class="row">
+            <div class="col-sm-6 d_flex fixed-height-box">
+                <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="no_card" ng-class="{'disabled': getUser().data.trial_ends_at}">
+                    <span class="custom-control-description">
+                        <span class="wrap_top_title">
+                            <input name="billing_type" type="radio" class="custom-control-input" ng-model="$registerCtrl.data['toolbox'].billing_type" value="trial" required ng-disabled="getUser().data.trial_ends_at" ng-click="subscriptionMode = 'trial'">
+                            <span class="custom-control-indicator"></span>
+                            <span class="title_control text-center">7 Day Free Trial<span ng-show="getUser().data.trial_ends_at"><br/><small>(already taken)</small></span></span>
+                        </span>
+                        <div class="wrap_text_control text-center">
+                            <div class="no_card_ic_icon">
+                                <svg viewBox="0 0 50 42"><use xlink:href="#no-card-ic"></use></svg>
+                            </div>
+                            <p class="text_grey">No credit card required</p>
+                        </div>
+                    </span>
+                </label>
+            </div>
+            <div class="col-sm-6 d_flex fixed-height-box">
+                <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" data-register="card_purchase">
+                    <span class="custom-control-description">
+                        <span class="wrap_top_title">
+                            <input name="billing_type" type="radio" class="custom-control-input" ng-model="$registerCtrl.data['toolbox'].billing_type" value="subscription" required ng-click="subscriptionMode = 'subscription'">
+                            <span class="custom-control-indicator"></span>
+                            <span class="title_control text-center">Purchase <span ng-hide="getUser().hasRole('toolbox')">GMS+ or</span> Courses</span>
+                        </span>
+                        <div class="wrap_text_control text-center">
+                            <div class="card_purchase_ic_icon">
+                                <svg viewBox="0 0 66 41"><use xlink:href="#card-purchase-ic"></use></svg>
+                            </div>
+                            <p class="text_grey">Immediate access to all features</p>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <button
+                    ng-if="$registerCtrl.data['toolbox'].billing_type == 'subscription'"
+                    ng-click="$registerCtrl.next()"
+                    ng-disabled="billingTypeForm.$invalid"
+                    type="button" class="btn">
+                Continue
+            </button>
+            <button
+                    ng-if="$registerCtrl.data['toolbox'].billing_type == 'trial'"
+                    ng-click="
+                                            $registerCtrl.setSkipPayment();
+                                            $registerCtrl.register()"
+                    ng-disabled="billingTypeForm.$invalid"
+                    type="button" class="btn">
+                Finish Registration
+            </button>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('toolbox-payment-plans')" class="gmsplus_pricing" ng-controller="PricingController">
+    <h3 class="text-center title">Select options from below</h3>
+
+    <ul class="justify-content-center list-unstyled row">
+        <li class="nav-item col-sm-12 col-md-5">
+            <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" ng-class="{'active': $registerCtrl.path == 'toolbox', 'disabled': getUser().hasRole('toolbox')}">
+                <span class="custom-control-description">
+                    <span class="wrap_top_title">
+                        <input name="purchase_toolbox" type="radio" value="toolbox" class="custom-control-input" required ng-model="$registerCtrl.path" ng-disabled="getUser().hasRole('toolbox')">
+                        <span class="custom-control-indicator"></span>
+                        <span class="title_control">Purchase GMS+<small ng-show="getUser().hasRole('toolbox')"><br/>(already registered)</small></span>
+                    </span>
+                </span>
+            </label>
+        </li>
+        <li class="nav-item col-sm-12 col-md-5">
+            <label class="custom-control custom_control custom-radio jsTypeRegister jsCheckbox" ng-class="{'active': $registerCtrl.path == 'courses'}">
+                <span class="custom-control-description">
+                    <span class="wrap_top_title">
+                        <input name="purchase_toolbox" type="radio" value="courses" class="custom-control-input" required ng-model="$registerCtrl.path" ng-click="$registerCtrl.prepareCoursesList()">
+                        <span class="custom-control-indicator"></span>
+                        <span class="title_control">Purchase Individual Courses</span>
+                    </span>
+                </span>
+            </label>
+        </li>
+    </ul>
+
+    <div ng-show="$registerCtrl.path != 'courses'">
+        <h4 class="text-center">Select your payment plan</h4>
+        <div class="tabs_block">
+            <ul class="list tab_nav">
+                <li class="nav-item"><a ng-click="annually = false; calculatePrice(); setPaymentOptions(annually, accountsNumber);" href="#" class="active" ng-class="{'active': !annually}">Monthly Billing</a></li>
+                <li class="nav-item"><a ng-click="annually = true; calculatePrice(); setPaymentOptions(annually, accountsNumber);" href="#" ng-class="{'active': annually}">Annual Billing</a></li>
+            </ul>
+            <div>
+                <div>
+                    <div class="text-center program_list">
+                        <div class="margin-top-1em">Additional accounts: $<span ng-bind="additionalAccountPrice"></span>/<span ng-show="!annually">month</span><span ng-show="annually">year</span> per user</div>
+                        <div class="counter">
+                            <i class="fa fa-minus-circle account-decrement" aria-hidden="true" ng-click="changeAccountsNumber(-1); setPaymentOptions(annually, accountsNumber)"></i><span class="accounts-number" ng-bind="accountsNumber"></span><i class="fa fa-plus-circle account-increment" aria-hidden="true" ng-click="changeAccountsNumber(1); setPaymentOptions(annually, accountsNumber)"></i>
+                        </div>
+                    </div>
+                    <div class="wrap_price_block">
+                        <div class="desc_program">
+                            <span class="price_program">$<span ng-bind="price"></span></span>
+                            <p class="help_text">per <span ng-show="!annually">month</span><span ng-show="annually">year</span></p>
+                            <!--
+                            <span ng-show="!annually">$<span ng-bind="annualPrice"></span> Billing Annually</span>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-click="$registerCtrl.next(); $registerCtrl.clearPaymentData()">Go to the last step</button></div>
+        </div>
+    </div>
+    <div ng-show="$registerCtrl.path == 'courses'">
+        <h4 class="text-center margin-top-1em">Select the Courses You Want to Purchase</h4>
+        <div class="alert alert-info" ng-show="!coursesList.courses.length">
+            <i class="fa fa-info-circle"></i>&nbsp;There is no course added yet.
+        </div>
+        <div ng-show="coursesList.courses.length">
+            <table class="list-unstyled table courses-list">
+                <tr ng-repeat="course in coursesList.courses | isCourseNotFree" ng-class="{'disabled': isCourseDisabled(course)}">
+                    <td>
+                        <label class="custom-checkbox">{%course.name%}
+                            <input type="checkbox" ng-click="$registerCtrl.toggleCourse(course)" ng-disabled="isCourseDisabled(course)" ng-checked="isCourseDisabled(course)">
+                            <span class="checkmark checkmark-circle"></span>
+                        </label>
+                    <td>
+                        <span ng-bind="course.lessons.length"></span>
+                        <span ng-show="course.lessons.length == 1">lesson</span>
+                        <span ng-show="course.lessons.length > 1">lessons</span>
+                    </td>
+                    <td>
+                        <span ng-if="!isCourseDisabled(course)">
+                            <span ng-hide="getUser().hasRole('toolbox')" ng-bind="course.price | currency"></span>
+                            <span ng-show="getUser().hasRole('toolbox')" ng-bind="getPriceWithDiscount(course.price, COURSE_GMSPLUS_DISCOUNT) | currency"></span>
+                        </span>
+                        <small ng-if="isCourseDisabled(course)">
+                            <span ng-show="isFoundationalCourse(course)">Included with GMS+</span>
+                            <span ng-hide="isFoundationalCourse(course)">Purchased</span>
+                        </small>
+                    </td>
+                </tr>
+            </table>
+            <div class="wrap_price_block">
+                <div class="desc_program">
+                    <span class="price_program" ng-hide="getUser().hasRole('toolbox')">$<span ng-bind="getCoursesTotalPrice()"></span></span>
+                    <span class="price_program" ng-show="getUser().hasRole('toolbox')">$<span ng-bind="getPriceWithDiscount(getCoursesTotalPrice(), COURSE_GMSPLUS_DISCOUNT)"></span></span>
+                    <span ng-show="getUser().hasRole('toolbox') && $registerCtrl.data['courses'].length"><small class="text-secondary">Normal price is $<span ng-bind="getCoursesTotalPrice()"></span>.<br/>You receive 40% off for being a GMS+ subscriber.</small></span>
+                    <p class="help_text">Total Courses: <span ng-bind="$registerCtrl.data.courses.length || 0"></span></p>
+                </div>
+            </div>
+            <div class="wrap_btns text-center">
+                <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+                <div class="wrap_btn"><button class="btn" ng-disabled="!$registerCtrl.data.courses.length" ng-click="$registerCtrl.next(); $registerCtrl.clearPaymentData()">Go to the last step</button></div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>                        <div ng-show="isSlideActive('toolbox-credit-card')" class="jsStep text-center gms_step_3">
+    <h3 class="text-center">Enter billing information</h3>
+    <form class="billing_list" name="toolboxCreditCardForm" novalidate>
+        <div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['toolbox-credit-card'].cardNumber">
+    Card number is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['toolbox-credit-card'].expMonth">
+    Exp. Month / Year is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['toolbox-credit-card'].cvc">
+    3 Digit Code on Back of Card is invalid
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.validationErrors['toolbox-credit-card'].stripe">
+    Payment system has rejected your payment data
+</div>
+
+
+<!-- <p ng-show="!!registerCtrl.validationErrors['toolbox-credit-card']" class="error" ng-bind="registerCtrl.validationErrors['toolbox-credit-card'].join('<br>')"></p> -->
+        <div class="alert alert-info" role="alert" ng-show="$registerCtrl.coupon"><strong>Coupon applied.</strong> You've got
+    <strong ng-if="$registerCtrl.coupon.type == '$'">{% $registerCtrl.coupon.discount | currency %}</strong>
+    <strong ng-if="$registerCtrl.coupon.type == '%'">{% $registerCtrl.coupon.discount %}&#37;</strong>
+    discount.
+</div>
+<div class="alert alert-danger" role="alert" ng-show="$registerCtrl.couponError" ng-bind="$registerCtrl.couponError"></div>        <div error="stripe" method="$registerCtrl.clearValidationError(key)">
+            <div class="form-group">
+                <div register-validation error="cardNumber" method="registerCtrl.clearValidationError(key)">
+                    <label class="label_list label_block" for="card_number3">1. Card Number</label>
+                    <input type="text" id="card_number3" class="form-control card_number" placeholder="**** **** **** ****" required ng-model="$registerCtrl.dataPayment.card_number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label_list label_block" for="expiration_date">2. Expiration date</label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="custom-select form-control" required ng-model="$registerCtrl.dataPayment.exp_month">
+                            <option selected="true" disabled="disabled" value="">Exp. Month</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expMonth | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="custom-select form-control " required ng-model="$registerCtrl.dataPayment.exp_year">
+                            <option selected="true" disabled="disabled" value="">Exp. Year</option>
+                            <option ng-repeat="(value, label) in $registerCtrl.helper.options.expYear | orderBy:'toString()'"
+                                    ng-bind="label" ng-value="value"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="label_list label_block" for="cvc2">3. CVC</label>
+                        <input type="text" id="cvc2" required class="form-control card_info" ng-minlength="3"
+                               ng-maxlength="4" ng-model="$registerCtrl.dataPayment.cvc">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="label_list label_block" for="zip_code3">4. Billing ZIP code</label>
+                        <input type="text" id="zip_code3" class="form-control card_info" ng-model="$registerCtrl.data['toolbox-credit-card'].billing_zip" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="label_list label_block" for="coupon_code3">5. Coupon Code (not required)</label>
+                        <input type="text" id="coupon_code3" class="form-control" ng-change="$registerCtrl.fetchCoupon($registerCtrl.data['toolbox-credit-card'].promo_code)" ng-model-options="{debounce: 750}" name="promo_code" ng-model="$registerCtrl.data['toolbox-credit-card'].promo_code">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <h5>Terms and conditions</h5>
+                            <section class="iframe-info mt-2">
+                                Terms and Conditions<br/>
+====================<br/>
+<br/>
+Please read these Terms and Conditions ("Terms", "Terms and Conditions")
+carefully before using the www.goldmedalsquared.com website (the "Service")
+operated by Gold Medal Squared Inc ("us", "we", or "our").
+<br/><br/>
+Your access to and use of the Service is conditioned upon your acceptance of
+and compliance with these Terms. These Terms apply to all visitors, users and
+others who wish to access or use the Service.
+<br/><br/>
+By accessing or using the Service you agree to be bound by these Terms. If you
+disagree with any part of the terms then you do not have permission to access
+the Service.
+<br/><br/>
+Communications<br/>
+--------------<br/>
+<br/>
+By creating an Account on our service, you agree to subscribe to newsletters,
+marketing or promotional materials and other information we may send. However,
+you may opt out of receiving any, or all, of these communications from us by
+following the unsubscribe link or instructions provided in any email we send.
+<br/>
+Subscriptions<br/>
+-------------<br/>
+<br/>
+Some parts of the Service are billed on a subscription basis
+("Subscription(s)"). You will be billed in advance on a recurring and periodic
+basis ("Billing Cycle"). Billing cycles are set either on a monthly or annual
+basis, depending on the type of subscription plan you select when purchasing a
+Subscription.
+<br/><br/>
+At the end of each Billing Cycle, your Subscription will automatically renew
+under the exact same conditions unless you cancel it or Gold Medal Squared
+cancels it. You may cancel your Subscription renewal either through your
+online account management page or by contacting Gold Medal Squared
+customer support team.
+<br/><br/>
+A valid payment method, including credit card, is required to process the
+payment for your Subscription. You shall provide Gold Medal Squared with
+accurate and complete billing information including full name, address, state,
+zip code, telephone number, and a valid payment method information. By
+submitting such payment information, you automatically authorize Gold Medal
+Squared to charge all Subscription fees incurred through your account to
+any such payment instruments.
+<br/><br/>
+Should automatic billing fail to occur for any reason, Gold Medal Squared
+will issue an electronic invoice indicating that you must proceed manually,
+within a certain deadline date, with the full payment corresponding to the
+billing period as indicated on the invoice.
+<br/><br/>
+Free Trial<br/>
+----------<br/>
+<br/>
+Gold Medal Squared may, at its sole discretion, offer a Subscription with
+a free trial for a limited period of time ("Free Trial").
+<br/><br/>
+You may be required to enter your billing information in order to sign up for
+the Free Trial.
+<br/><br/>
+At any time and without notice, Gold Medal Squared Inc reserves the right to
+(i) modify the terms and conditions of the Free Trial offer, or (ii) cancel
+such Free Trial offer.
+<br/><br/>
+Fee Changes<br/>
+-----------<br/>
+<br/>
+Gold Medal Squared, in its sole discretion and at any time, may modify the
+Subscription fees for the Subscriptions. Any Subscription fee change will
+become effective at the end of the then-current Billing Cycle.
+<br/><br/>
+Gold Medal Squared will provide you with a reasonable prior notice of any
+change in Subscription fees to give you an opportunity to terminate your
+Subscription before such change becomes effective.
+<br/><br/>
+Your continued use of the Service after the Subscription fee change comes into
+effect constitutes your agreement to pay the modified Subscription fee amount.
+<br/><br/>
+Refunds<br/>
+-------<br/>
+<br/>
+Certain refund requests for Subscriptions may be considered by Gold Medal
+Squared Inc on a case-by-case basis and granted in sole discretion of Gold
+Medal Squared.
+<br/><br/>
+Content<br/>
+-------<br/>
+<br/>
+Our Service allows you to post, link, store, share and otherwise make
+available certain information, text, graphics, videos, or other material
+("Content"). You are responsible for the Content that you post on or through
+the Service, including its legality, reliability, and appropriateness.
+<br/><br/>
+By posting Content on or through the Service, You represent and warrant that:
+(i) the Content is yours (you own it) and/or you have the right to use it and
+the right to grant us the rights and license as provided in these Terms, and
+(ii) that the posting of your Content on or through the Service does not
+violate the privacy rights, publicity rights, copyrights, contract rights or
+any other rights of any person or entity. We reserve the right to terminate
+the account of anyone found to be infringing on a copyright.
+<br/><br/>
+You retain any and all of your rights to any Content you submit, post or
+display on or through the Service and you are responsible for protecting those
+rights. We take no responsibility and assume no liability for Content you or
+any third party posts on or through the Service. However, by posting Content
+using the Service you grant us the right and license to use, modify, perform,
+display, reproduce, and distribute such Content on and through the Service.
+<br/><br/>
+Gold Medal Squared Inc has the right but not the obligation to monitor and
+edit all Content provided by users.
+<br/><br/>
+In addition, Content found on or through this Service are the property of Gold
+Medal Squared Inc or used with permission. You may not distribute, modify,
+transmit, reuse, download, repost, copy, or use said Content, whether in whole
+or in part, for commercial purposes or for personal gain, without express
+advance written permission from us.
+<br/><br/>
+Accounts<br/>
+--------<br/>
+<br/>
+When you create an account with us, you guarantee that you are above the age
+of 18, and that the information you provide us is accurate, complete, and
+current at all times. Inaccurate, incomplete, or obsolete information may
+result in the immediate termination of your account on the Service.
+<br/><br/>
+You are responsible for maintaining the confidentiality of your account and
+password, including but not limited to the restriction of access to your
+computer and/or account. You agree to accept responsibility for any and all
+activities or actions that occur under your account and/or password, whether
+your password is with our Service or a third-party service. You must notify us
+immediately upon becoming aware of any breach of security or unauthorized use
+of your account.
+<br/><br/>
+You may not use as a username the name of another person or entity or that is
+not lawfully available for use, a name or trademark that is subject to any
+rights of another person or entity other than you, without appropriate
+authorization. You may not use as a username any name that is offensive,
+vulgar or obscene.
+<br/><br/>
+Links To Other Web Sites<br/>
+------------------------<br/>
+<br/>
+Our Service may contain links to third party web sites or services that are
+not owned or controlled by Gold Medal Squared Inc
+<br/><br/>
+Gold Medal Squared Inc has no control over, and assumes no responsibility for
+the content, privacy policies, or practices of any third party web sites or
+services. We do not warrant the offerings of any of these entities/individuals
+or their websites.
+<br/><br/>
+You acknowledge and agree that Gold Medal Squared Inc shall not be responsible
+or liable, directly or indirectly, for any damage or loss caused or alleged to
+be caused by or in connection with use of or reliance on any such content,
+goods or services available on or through any such third party web sites or
+services.
+<br/><br/>
+We strongly advise you to read the terms and conditions and privacy policies
+of any third party web sites or services that you visit.
+<br/><br/>
+Termination<br/>
+-----------<br/>
+<br/>
+We may terminate or suspend your account and bar access to the Service
+immediately, without prior notice or liability, under our sole discretion, for
+any reason whatsoever and without limitation, including but not limited to a
+breach of the Terms.
+<br/><br/>
+If you wish to terminate your account, you may simply discontinue using the
+Service.
+<br/><br/>
+All provisions of the Terms which by their nature should survive termination
+shall survive termination, including, without limitation, ownership
+provisions, warranty disclaimers, indemnity and limitations of liability.
+<br/><br/>
+Governing Law<br/>
+-------------<br/>
+<br/>
+These Terms shall be governed and construed in accordance with the laws of
+Utah, United States, without regard to its conflict of law provisions.
+<br/><br/>
+Our failure to enforce any right or provision of these Terms will not be
+considered a waiver of those rights. If any provision of these Terms is held
+to be invalid or unenforceable by a court, the remaining provisions of these
+Terms will remain in effect. These Terms constitute the entire agreement
+between us regarding our Service, and supersede and replace any prior
+agreements we might have had between us regarding the Service.
+<br/><br/>
+Changes<br/>
+-------<br/>
+<br/>
+We reserve the right, at our sole discretion, to modify or replace these Terms
+at any time. If a revision is material we will provide at least 30 days notice
+prior to any new terms taking effect. What constitutes a material change will
+be determined at our sole discretion.
+<br/><br/>
+By continuing to access or use our Service after any revisions become
+effective, you agree to be bound by the revised terms. If you do not agree to
+the new terms, you are no longer authorized to use the Service.
+<br/><br/>
+Contact Us<br/>
+----------<br/>
+<br/>
+If you have any questions about these Terms, please contact us.                            </section>
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-radio registration-terms">
+                                <input type="checkbox" class="custom-control-input" value="1" ng-model="$registerCtrl.data['toolbox-credit-card'].agree" ng-required append-validation-message>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">
+                                                      <span class="title_control"><small>By checking this box I agree to the terms and conditions outlined above.</small></span>
+                                                  </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-show="$registerCtrl.showSpinner" class="text-center"
+             style="margin-top: 15px">
+            <img src="https://www.goldmedalsquared.com/img/spinner.gif"/>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-disabled="$registerCtrl.lockPaymentButton" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn" ng-show="$registerCtrl.path === 'courses'"><button class="btn" ng-disabled="$registerCtrl.lockPaymentButton || toolboxCreditCardForm.$invalid" ng-click="convertCoursesToIds(); $registerCtrl.paymentAndRegister()">Finish Courses Purchase!</button></div>
+            <div class="wrap_btn" ng-show="$registerCtrl.path !== 'courses'"><button class="btn" ng-disabled="$registerCtrl.lockPaymentButton || toolboxCreditCardForm.$invalid || !$registerCtrl.data['toolbox-credit-card'].agree" ng-click="$registerCtrl.paymentAndRegister()">Finish Registration!</button></div>
+        </div>
+    </form>
+</div>                        <div ng-show="isSlideActive('toolbox-success')" class="success_step jsStep text-center gms_step_5">
+    <div class="relative" ng-show="subscriptionMode == 'subscription'">
+        <h3>Success!</h3>
+        <p>
+            Welcome to GMS+, the most comprehensive education platform for volleyball coaches of all levels.
+            As a reminder, your account comes with our free statistics app. Download it today from the app
+            store.
+        </p>
+        <div class="wrap_btn text-center">
+            <a href="https://www.goldmedalsquared.com/gms-plus-start" class="btn btn_primary blue">Proceed to my account</a>
+        </div>
+    </div>
+    <div class="relative" ng-show="subscriptionMode == 'trial'">
+        <h3>Confirm Your Email</h3>
+        <p>
+            We have sent an activation link to the e-mail address you provided.<br />
+            Please check your inbox to confirm your email address, and to login.
+        </p>
+        <div class="wrap_btn text-center">
+            <button type="button" class="btn btn_primary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    <div class="bg_block">
+        <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+    </div>
+</div>                        <div ng-if="isSlideActive('courses-success')" class="success_step jsStep text-center gms_step_5">
+    <h3>Success!</h3>
+    <p>
+        Your new GMS course is ready to view. Enjoy!
+    </p>
+    <div class="wrap_btn text-center">
+        <a href="https://www.goldmedalsquared.com/user-courses" class="btn btn_primary">View my courses</a>
+    </div>
+    <div class="bg_block">
+        <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+    </div>
+</div>
+                        <div ng-show="isSlideActive('coach-club-dates')" class="jsStep text-center events_step_2">
+    <h3>Request Your Dates</h3>
+    <p>
+        Our club and beach weekend events typically run Friday evening through Sunday. If you need to modify this schedule, please send let us know.
+    </p>
+    <form novalidate name="formCoachClubDates">
+        <section register-calendar class="calendar clearifx" selectable="6" exclude="May|June|July|August">
+            <div class="main-div-conts-inner-center">
+                <div class="form-group">
+                    <div ng-show="isSelected('1')">
+                        <div class="span1-11">
+                            <p class="title">Your <strong>primary</strong> date request</p>
+                        </div>
+                        <div class="row primary justify-content-center">
+                            <div class="col-md-8">
+
+                                <datepicker visible-on-load date-format="yyyy-MM-dd" date-set-hidden="true"
+                                            date-set="{% $registerCtrl.helper.dates.clubStartDate %}"
+                                            date-min-limit="{% $registerCtrl.helper.dates.clubStartDate %}"
+                                            date-max-limit="{% $registerCtrl.helper.dates.clubEndDate %}">
+                                    <input type="text" ng-hide="true" ng-model="primary_start_date" ng-change="weekend('primary', primary_start_date) ? $registerCtrl.data['coach-club-dates'].primary_start_date = primary_start_date : ''">
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="isSelected('2')">
+                        <div class="span1-11">
+                            <p class="title">Your <strong>secondary</strong> date request</p>
+                        </div>
+                        <div class="span11 secondary justify-content-center row">
+                            <div class="col-md-8">
+                                <datepicker visible-on-load date-format="yyyy-MM-dd" date-set-hidden="true"
+                                            date-set-hidden="true"
+                                            date-set="{% $registerCtrl.helper.dates.clubStartDate %}"
+                                            date-min-limit="{% $registerCtrl.helper.dates.clubStartDate %}"
+                                            date-max-limit="{% $registerCtrl.helper.dates.clubEndDate %}">
+                                    <input type="text" ng-hide="true" ng-model="secondary_start_date" ng-change="weekend('secondary', secondary_start_date) ? $registerCtrl.data['coach-club-dates'].secondary_start_date = secondary_start_date : ''">
+                                </datepicker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max_w_355">
+                    <div class="form-group">
+                        <input required type="text" readonly ng-click="setSelected('1')" class="fom-div register-form-el-width form-control" placeholder="Your Primary Week Dates Option" name="primary" ng-model="primary">
+                    </div>
+                    <div class="form-group">
+                        <input required type="text" readonly ng-click="setSelected('2')" class="fom-div register-form-el-width form-control" placeholder="Your Secondary Week Dates Option" name="secondary" ng-model="secondary">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="max_w_355">
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-club-dates'].number_of_athletes" ng-options="key as value for (key, value) in $registerCtrl.helper.options.numberOfCoaches | orderBy:'toString()'">
+                    <option selected="true" disabled="disabled" value="">Estimated number of participants</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="custom-select form-control" required ng-model="$registerCtrl.data['coach-club-dates'].courts_in_gym">
+                    <option selected="true" disabled="disabled" value="">Available courts at facility</option>
+                    <option ng-repeat="value in [1,2,3,4,5,6,7,8,9,10]" value="{% value %}">{% value %}</option>
+                </select>
+            </div>
+        </div>
+        <div class="wrap_btns text-center">
+            <div class="wrap_btn"><button class="btn btn_primary_invert" ng-click="$registerCtrl.prev()">Back</button></div>
+            <div class="wrap_btn"><button class="btn" ng-click="$registerCtrl.register()" ng-disabled="formCoachClubDates.$invalid">Finish Registration!</button></div>
+        </div>
+    </form>
+
+</div>                        <div ng-show="isSlideActive('coach-weekend-success')" class="success_step jsStep text-center events_step_3">
+<div class="relative">
+    <h3>Success!</h3>
+    <p>We will be in touch to confirm your requests shortly.  Please note that your event details will not appear in your account until dates are confirmed on our calendar.</p>
+    <div class="wrap_btn text-center">
+        <a href="https://www.goldmedalsquared.com/dashboard" class="btn btn_primary blue" ng-click="$registerCtrl.register()">
+            Proceed to my account</a>
+    </div>
+</div>
+<div class="bg_block">
+    <svg viewBox="0 0 219 236.031"><use xlink:href="#success_svg"></use></svg>
+</div>
+</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<script>
+    var currentYear = 2019;
+    var registrationsYear = 2019;
+    var stripeClinicsPK = 'pk_live_tg4pJXK4i4IRGVKhRsA3C7fB';
+</script>
+<script src="https://www.goldmedalsquared.com/js/admin.js?c=1556119928"></script>
+
+<div class="main_svg"></div>
+<script>
+    $(function () {
+        $(".main_svg").load('https://www.goldmedalsquared.com/images/svg.svg');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+
+        $('.jsNavBt').click(function(){
+            var thisParent = $(this).closest('.jsMobileNavParent');
+            thisParent.toggleClass('show_menu');
+            thisParent.find('.jsNavShow').collapse('toggle');
+        });
+
+        var scrollTop = $(document).scrollTop();
+        $(window).scroll(function() {
+            var headerHeight = $('.sticky_header').outerHeight() - 20;
+            var scrollTopPosition = $(document).scrollTop();
+            if (scrollTopPosition > headerHeight){
+                $('.sticky_header').addClass('hide_header');
+            }
+            else {
+                $('.sticky_header').removeClass('hide_header');
+            }
+            if (scrollTopPosition > scrollTop){
+                $('.sticky_header').removeClass('show_header');
+            }
+            else {
+                $('.sticky_header').addClass('show_header');
+            }
+            scrollTop = $(document).scrollTop();
+        });
+        // full slider
+        var swiperFullSlider = new Swiper('.jsSlider', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+        });
+        // END full slider
+
+        
+$('.play-video').click(function(){
+  var videoId = $(this).data('videoId');
+  bootbox.dialog({
+    className: 'modal-wider wider force-no-transform',
+    message: '<div class="bootbox-preview" style="min-height: 200px; margin-top: 30px; border: 1px solid #f0f0f0;"></div>',
+    buttons: {
+      ok: {
+        label: "Close"
+      }
+    }
+  }).on('shown.bs.modal', function() {
+    $.getJSON('https://www.goldmedalsquared.com/courses/video/' + videoId, {}, function(result){
+      if (result.id) {
+        function createPlayer(response) {
+          var player = '<div class="invalid-id">Invalid ID</div>';
+          if (response.id && response.security_token) {
+            var ratio = response.width / response.height;
+            var height = $('.bootbox-preview').width() / ratio;
+            player = '<div class="video"><iframe class="sproutvideo-player" type="text/html" src="https://videos.sproutvideo.com/embed/' + response.id + '/' + response.security_token + '?type=hd&noBigPlay=true&showcontrols=true" width="100%" height="' + height + '" frameborder="0" allowfullscreen></iframe></div>';
+          }
+          $('.bootbox .bootbox-preview').html(player);
+        }
+        createPlayer(result);
+      }
+    });
+  }).on('hide.bs.modal', function(){
+    $('.bootbox .bootbox-preview').empty();
+  });
+
+});
+$('.lessons-list .show-all').click(function(){
+  $(this).closest('.lessons-list').find('li.d-none').addClass('dd-none').removeClass('d-none');
+  $(this).addClass('d-none');
+  $(this).parent().find('.hide-all').removeClass('d-none');
+});
+$('.lessons-list .hide-all').click(function(){
+  $(this).closest('.lessons-list').find('li.dd-none').addClass('d-none');
+  $(this).addClass('d-none');
+  $(this).parent().find('.show-all').removeClass('d-none');
+});
+$('.file-block:not(".play-video")').click(function(){
+  var link = $(this).data('link');
+  switch($(this).data('type')) {
+    case 'file':
+      window.open(link);
+      break;
+  }
+});
+/*
+$('.main-image.play').click(function(){
+  $('.lessons-list-container li a.simple-play').eq(0).click();
+});*/
+    })
+</script>
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Noto+Sans:400,700', 'Open+Sans:300,400,600' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+
+<!-- style for IE -->
+<script>if(!!navigator.userAgent.match(/Trident\/7\./)){document.body.className+=' ie_browser';}</script>
+<style>
+    .ie_browser .top_section{height: 100vh;}
+    .ie_browser .custom_col{max-width: 14.28571428571429%;}
+    .ie_browser .wrap_price_block .desc_program, .ie_browser .wrap_price_block .program_list{width: 100%;}
+</style>
+<!-- END style for IE -->
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.main-image.player').click(function(){
+        $('.lessons-list-container a:first').click();
+      });
+      $('.lessons-list-container a').click(function(){
+        $('.lessons-list-container a').removeClass('playing');
+        $(this).addClass('playing');
+        var videoId = $(this).data('videoId');
+        var that = this;
+        $.getJSON('https://www.goldmedalsquared.com/courses/video/' + videoId, {}, function(result){
+          if (result.id) {
+            function createPlayer(response) {
+              var player = '<div class="invalid-id">Invalid ID</div>';
+              if (response.id && response.security_token) {
+                var height = response.height / (response.width / $('.player-container').find('.image-title-block').width());
+                player = '<div class="video"><iframe class="sproutvideo-player" type="text/html" src="https://videos.sproutvideo.com/embed/' + response.id + '/' + response.security_token + '?type=hd&noBigPlay=true&showcontrols=true" width="100%" height="' + height + '" frameborder="0" allowfullscreen></iframe></div>';
+              }
+              $('.player-container').find('.image-title-block').html(player);
+            }
+            function selectElement(element) {
+              $('.player-container .row-link .play').removeClass('visible');
+              $(element).find('.play').addClass('visible');
+            }
+            createPlayer(result);
+            selectElement(that);
+          }
+        });
+      });
+      $('.lessons-list .show-all').click(function(){
+        $(this).closest('.lessons-list').find('.d-none').addClass('dd-none').removeClass('d-none');
+
+        $(this).closest('.lessons-list').find('.lessons-list-container').addClass('overflow-6');
+
+        $(this).addClass('d-none');
+        $(this).parent().find('.hide-all').removeClass('d-none');
+      });
+      $('.lessons-list .hide-all').click(function(){
+        $(this).closest('.lessons-list').find('.dd-none').addClass('d-none');
+        $(this).closest('.lessons-list').find('.lessons-list-container').removeClass('overflow-6');
+        $(this).addClass('d-none');
+        $(this).parent().find('.show-all').removeClass('d-none');
+      });
+
+
+    });
+  </script>
+
+</body>
+</html>
